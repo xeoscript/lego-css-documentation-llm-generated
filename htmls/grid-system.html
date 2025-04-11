@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid System Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            /* max-width: 900px; */
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 35px;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+        h3 {
+            color: #16a085;
+            margin-top: 25px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background: #eef;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            line-height: 1.4;
+            tab-size: 4;
+            margin: 20px 0;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            color: inherit;
+        }
+        .note {
+            background-color: #e7f5fe;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .example {
+            background-color: #f0fff0;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            margin: 20px 0;
+        }
+    </style>
+    <link rel="stylesheet" href="./assets/sidebar.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+          <h2>Logo</h2>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li><a href="#home">Home</a></li>
+      
+            <!-- Dropdown Menu -->
+            <li class="dropdown">
+              <input type="checkbox" id="doc-toggle">
+              <label for="doc-toggle" class="dropdown-label">Documentation</label>
+              <ul class="dropdown-menu">
+                <li><a href="#grid-system">Grid System</a></li>
+                <li><a href="#utilities">Utilities</a></li>
+                <li><a href="#customization">Customization</a></li>
+              </ul>
+            </li>
+      
+            <li><a href="#examples">Examples</a></li>
+            <li><a href="#tutorials">Tutorials</a></li>
+            <li><a href="https://github.com" target="_blank" class="github-btn">GitHub</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <main>
+    <h1>Grid System Documentation</h1>
+    
+    <p>The grid system provides a responsive, mobile-first layout system with customizable breakpoints, containers, rows, and columns.</p>
+    
+    <div class="note">
+        <strong>Note:</strong> All grid classes are generated only if <code>$enable-grid-classes</code> is set to <code>true</code> (default).
+    </div>
+    
+    <h2>Responsive Breakpoints</h2>
+    
+    <p>The grid system uses the following default breakpoints (can be customized via Sass variables):</p>
+    
+    <table>
+        <tr>
+            <th>Breakpoint</th>
+            <th>Container Max Width</th>
+            <th>CSS Variable</th>
+        </tr>
+        <tr>
+            <td><code>sm</code></td>
+            <td>540px</td>
+            <td><code>--container-max-width-sm</code></td>
+        </tr>
+        <tr>
+            <td><code>md</code></td>
+            <td>720px</td>
+            <td><code>--container-max-width-md</code></td>
+        </tr>
+        <tr>
+            <td><code>lg</code></td>
+            <td>960px</td>
+            <td><code>--container-max-width-lg</code></td>
+        </tr>
+        <tr>
+            <td><code>xl</code></td>
+            <td>1140px</td>
+            <td><code>--container-max-width-xl</code></td>
+        </tr>
+    </table>
+    
+    <p>The default gutter width is controlled by the CSS variable:</p>
+    <pre><code>--grid-gutter-width: 30px;</code></pre>
+    
+    <h2>Container Classes</h2>
+    
+    <h3>Base Container Classes</h3>
+    
+    <div class="example">
+        <h4>Example:</h4>
+        <pre><code>&lt;!-- Fluid container (100% width at all breakpoints) --&gt;
+&lt;div class="container-fluid"&gt;
+  &lt;!-- Content --&gt;
+&lt;/div&gt;
+
+&lt;!-- Responsive container (max-width at each breakpoint) --&gt;
+&lt;div class="container"&gt;
+  &lt;!-- Content --&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+    
+    <h3>Responsive Containers</h3>
+    
+    <p>These containers are 100% wide until the specified breakpoint:</p>
+    
+    <div class="example">
+        <h4>Example:</h4>
+        <pre><code>&lt;!-- 100% wide until the specified breakpoint, then max-width --&gt;
+&lt;div class="container-sm"&gt;...&lt;/div&gt;  &lt;!-- max-width: 540px --&gt;
+&lt;div class="container-md"&gt;...&lt;/div&gt;  &lt;!-- max-width: 720px --&gt;
+&lt;div class="container-lg"&gt;...&lt;/div&gt;  &lt;!-- max-width: 960px --&gt;
+&lt;div class="container-xl"&gt;...&lt;/div&gt;  &lt;!-- max-width: 1140px --&gt;</code></pre>
+    </div>
+    
+    <h2>Row Classes</h2>
+    
+    <h3>Basic Row</h3>
+    
+    <div class="example">
+        <h4>Example:</h4>
+        <pre><code>&lt;div class="row"&gt;
+  &lt;div class="col"&gt;Column 1&lt;/div&gt;
+  &lt;div class="col"&gt;Column 2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+    
+    <h3>Row Variations</h3>
+    
+    <div class="example">
+        <h4>Examples:</h4>
+        <pre><code>&lt;!-- Row with small gutters (16px) --&gt;
+&lt;div class="row gutter-small"&gt;
+  &lt;div class="col"&gt;Column 1&lt;/div&gt;
+  &lt;div class="col"&gt;Column 2&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Row without gutters --&gt;
+&lt;div class="row no-gutters"&gt;
+  &lt;div class="col"&gt;Column 1&lt;/div&gt;
+  &lt;div class="col"&gt;Column 2&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Row with bottom gutters (adds margin-bottom to columns) --&gt;
+&lt;div class="row bottom-gutters"&gt;
+  &lt;div class="col"&gt;Column 1&lt;/div&gt;
+  &lt;div class="col"&gt;Column 2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+    
+    <h2>Column System</h2>
+    
+    <p>The column system uses a 12-column layout with responsive breakpoints.</p>
+    
+    <h3>Basic Columns</h3>
+    
+    <div class="example">
+        <h4>Examples:</h4>
+        <pre><code>&lt;div class="row"&gt;
+  &lt;div class="col"&gt;Auto-width column&lt;/div&gt;
+  &lt;div class="col"&gt;Auto-width column&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="row"&gt;
+  &lt;div class="col-6"&gt;Half-width column (6/12)&lt;/div&gt;
+  &lt;div class="col-6"&gt;Half-width column (6/12)&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+    
+    <h3>Responsive Columns</h3>
+    
+    <div class="example">
+        <h4>Example:</h4>
+        <pre><code>&lt;!-- Stack on mobile, 50% on sm, 25% on md and up --&gt;
+&lt;div class="row"&gt;
+  &lt;div class="col-12 col-sm-6 col-md-3"&gt;Column 1&lt;/div&gt;
+  &lt;div class="col-12 col-sm-6 col-md-3"&gt;Column 2&lt;/div&gt;
+  &lt;div class="col-12 col-sm-6 col-md-3"&gt;Column 3&lt;/div&gt;
+  &lt;div class="col-12 col-sm-6 col-md-3"&gt;Column 4&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+    
+    <h3>Available Column Classes</h3>
+    
+    <p>The system generates column classes for each breakpoint in the format:</p>
+    <ul>
+        <li><code>col-{breakpoint}-{columns}</code> (e.g., <code>col-sm-6</code>, <code>col-md-4</code>)</li>
+        <li><code>col-{columns}</code> (extra small screens, no breakpoint)</li>
+    </ul>
+    
+    <h2>Gutters</h2>
+    
+    <p>The default gutter width is 30px, controlled by the CSS variable:</p>
+    <pre><code>--grid-gutter-width: 30px;</code></pre>
+    
+    <p>This can be modified:</p>
+    <pre><code>/* Custom gutter width */
+.row {
+  --grid-gutter-width: 20px;
+}</code></pre>
+    
+    <h2>Customization</h2>
+    
+    <p>The grid system can be customized by modifying the Sass variables before importing the grid files:</p>
+    
+    <pre><code>// Example customization
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+);
+
+$enable-grid-classes: true;
+
+@import "grid";</code></pre>
+    
+    <div class="note">
+        <strong>Implementation Note:</strong> The grid system uses CSS variables for container max-widths (<code>--container-max-width-{breakpoint}</code>) and gutter width (<code>--grid-gutter-width</code>), making it easy to override these values dynamically.
+    </div>
+</main>
+</body>
+</html>

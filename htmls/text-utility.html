@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Utility Classes Documentation</title>
+    <style>
+        :root {
+            --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            --font-weight-light: 300;
+            --font-weight-lighter: 200;
+            --font-weight-normal: 400;
+            --font-weight-bold: 700;
+            --font-weight-bolder: 800;
+            --body-text-color: #212529;
+            --text-muted: #6c757d;
+            --color-black-50: rgba(0, 0, 0, 0.5);
+            --color-white-50: rgba(255, 255, 255, 0.5);
+            --color-primary: #007bff;
+            --color-primary-700: #0056b3;
+            --color-secondary: #6c757d;
+            --color-secondary-700: #495057;
+            --color-success: #28a745;
+            --color-success-700: #1e7e34;
+            --color-danger: #dc3545;
+            --color-danger-700: #bd2130;
+            --color-warning: #ffc107;
+            --color-warning-700: #d39e00;
+            --color-info: #17a2b8;
+            --color-info-700: #117a8b;
+            --color-light: #f8f9fa;
+            --color-light-700: #dae0e5;
+            --color-dark: #343a40;
+            --color-dark-700: #1d2124;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.5;
+            color: var(--body-text-color);
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1, h2, h3 {
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        
+        .card {
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .card-header {
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 0;
+            background-color: rgba(0, 0, 0, 0.03);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+            font-weight: bold;
+        }
+        
+        .card-body {
+            padding: 1.25rem;
+        }
+        
+        .demo-box {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px dashed #dee2e6;
+            border-radius: 0.25rem;
+        }
+        
+        .code-block {
+            position: relative;
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            font-family: var(--font-family-monospace);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            overflow-x: auto;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            border-radius: 0.2rem;
+            cursor: pointer;
+        }
+        
+        .copy-btn:hover {
+            background-color: #dee2e6;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        /* Include all the text utility classes from the SCSS */
+        .text-monospace { font-family: var(--font-family-monospace) !important; }
+        .text-center { text-align: center !important; }
+        .text-justify { text-align: justify !important; }
+        .text-wrap { white-space: normal !important; }
+        .text-nowrap { white-space: nowrap !important; }
+        .text-truncate { 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+            white-space: nowrap; 
+            display: inline-block;
+            max-width: 100%;
+        }
+        .text-pre-wrap {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+        .text-left { text-align: left !important; }
+        .text-right { text-align: right !important; }
+        .text-lowercase { text-transform: lowercase !important; }
+        .text-uppercase { text-transform: uppercase !important; }
+        .text-capitalize { text-transform: capitalize !important; }
+        .font-weight-light { font-weight: var(--font-weight-light) !important; }
+        .font-weight-lighter { font-weight: var(--font-weight-lighter) !important; }
+        .font-weight-normal { font-weight: var(--font-weight-normal) !important; }
+        .font-weight-bold { font-weight: var(--font-weight-bold) !important; }
+        .font-weight-bolder { font-weight: var(--font-weight-bolder) !important; }
+        .font-italic { font-style: italic !important; }
+        .text-primary { color: var(--color-primary) !important; }
+        .text-secondary { color: var(--color-secondary) !important; }
+        .text-success { color: var(--color-success) !important; }
+        .text-danger { color: var(--color-danger) !important; }
+        .text-warning { color: var(--color-warning) !important; }
+        .text-info { color: var(--color-info) !important; }
+        .text-light { color: var(--color-light) !important; background-color: #343a40; padding: 0.25rem; }
+        .text-dark { color: var(--color-dark) !important; }
+        .text-body { color: var(--body-text-color) !important; }
+        .text-muted { color: var(--text-muted) !important; }
+        .text-black-50 { color: var(--color-black-50) !important; }
+        .text-white-50 { color: var(--color-white-50) !important; background-color: #343a40; padding: 0.25rem; }
+        .text-hide {
+            font: 0/0 a;
+            color: transparent;
+            text-shadow: none;
+            background-color: transparent;
+            border: 0;
+        }
+        .text-decoration-none { text-decoration: none !important; }
+        .text-break {
+            word-break: break-word !important;
+            word-wrap: break-word !important;
+        }
+        .text-reset { color: inherit !important; }
+        .text-2x { font-size: 2em !important; }
+        .text-3x { font-size: 3em !important; }
+        .text-4x { font-size: 4em !important; }
+        .text-5x { font-size: 5em !important; }
+        .lh-1 { line-height: 1 !important; }
+        .lh-2 { line-height: 1.1 !important; }
+        .lh-3 { line-height: 1.2 !important; }
+        .lh-4 { line-height: 1.3 !important; }
+        .lh-5 { line-height: 1.4 !important; }
+        .lh-6 { line-height: 1.5 !important; }
+        .lh-7 { line-height: 1.6 !important; }
+        .lh-8 { line-height: 1.7 !important; }
+        .lh-9 { line-height: 1.8 !important; }
+        .lh-10 { line-height: 1.9 !important; }
+        .lh-11 { line-height: 2 !important; }
+        
+        /* Responsive text alignment classes */
+        @media (min-width: 576px) {
+            .text-sm-left { text-align: left !important; }
+            .text-sm-right { text-align: right !important; }
+            .text-sm-center { text-align: center !important; }
+            .text-sm-justify { text-align: justify !important; }
+        }
+        
+        @media (min-width: 768px) {
+            .text-md-left { text-align: left !important; }
+            .text-md-right { text-align: right !important; }
+            .text-md-center { text-align: center !important; }
+            .text-md-justify { text-align: justify !important; }
+        }
+        
+        @media (min-width: 992px) {
+            .text-lg-left { text-align: left !important; }
+            .text-lg-right { text-align: right !important; }
+            .text-lg-center { text-align: center !important; }
+            .text-lg-justify { text-align: justify !important; }
+        }
+        
+        @media (min-width: 1200px) {
+            .text-xl-left { text-align: left !important; }
+            .text-xl-right { text-align: right !important; }
+            .text-xl-center { text-align: center !important; }
+            .text-xl-justify { text-align: justify !important; }
+        }
+    </style>
+    <link rel="stylesheet" href="./assets/sidebar.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="fl-x fl-a-c"><img src="./assets/logo/xeo-lego.png" class="logo-sm" alt=""><span class="ml-1"><b>&nbsp; Lego CSS Docs</b></span></div>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li><a href="../index.html">Grid System</a></li>
+      
+            <!-- Dropdown Menu -->
+            <!-- <li class="dropdown">
+              <input type="checkbox" id="doc-toggle">
+              <label for="doc-toggle" class="dropdown-label">Documentation</label>
+              <ul class="dropdown-menu">
+                <li><a href="#grid-system">Grid System</a></li>
+                <li><a href="#utilities">Utilities</a></li>
+                <li><a href="#customization">Customization</a></li>
+              </ul>
+            </li> -->
+      
+            <li><a href="./margin-padding.html">Margin & Padding</a></li>
+            <li><a href="./position-and-other-helpers.html">Position</a></li>
+            <li><a href="./flex-alignments.html">Flex Alignments</a></li>
+            <li><a href="./display-utility.html">Display</a></li>
+            <li><a href="./border-classes.html">Borders</a></li>
+            <li><a href="./accent-color-utility.html" class="active">Accent Colors</a></li>
+            <li><a href="./box-shadows.html">Box Shadow</a></li>
+            <li><a href="./text-utility.html" class="active">Text Utility</a></li>
+            <li><a href="./flex-alignments.html" target="_blank" class="github-btn">GitHub</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <main>
+    <div class="container">
+        <h1>Text Utility Classes</h1>
+        <p>Documentation for text-related utility classes with live demos and code examples.</p>
+        
+        <h2>Font Family</h2>
+        <div class="card">
+            <div class="card-header">.text-monospace</div>
+            <div class="card-body">
+                <div class="demo-box">
+                    <p class="text-monospace">This text is in a monospace font.</p>
+                </div>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <code>&lt;p class="text-monospace"&gt;This text is in a monospace font.&lt;/p&gt;</code>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Text Alignment</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">.text-left</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-left">Left aligned text.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-left"&gt;Left aligned text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-center</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-center">Center aligned text.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-center"&gt;Center aligned text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-right</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-right">Right aligned text.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-right"&gt;Right aligned text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-justify</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-justify" style="max-width: 300px;">Justified text fills the entire width of the container by adjusting word spacing.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-justify"&gt;Justified text...&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Responsive Text Alignment</h3>
+        <div class="card">
+            <div class="card-body">
+                <p>These classes allow you to change text alignment at different breakpoints:</p>
+                <ul>
+                    <li><code>.text-[sm/md/lg/xl]-left</code></li>
+                    <li><code>.text-[sm/md/lg/xl]-center</code></li>
+                    <li><code>.text-[sm/md/lg/xl]-right</code></li>
+                    <li><code>.text-[sm/md/lg/xl]-justify</code></li>
+                </ul>
+                <div class="demo-box">
+                    <p class="text-center text-md-left text-lg-right">This text is centered on mobile, left-aligned on medium screens, and right-aligned on large screens.</p>
+                </div>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <code>&lt;p class="text-center text-md-left text-lg-right"&gt;Responsive alignment text.&lt;/p&gt;</code>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Text Wrapping and Overflow</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">.text-wrap</div>
+                <div class="card-body">
+                    <div class="demo-box" style="width: 150px;">
+                        <p class="text-wrap">This long text will wrap to the next line if needed.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-wrap"&gt;This long text will wrap...&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-nowrap</div>
+                <div class="card-body">
+                    <div class="demo-box" style="width: 150px;">
+                        <p class="text-nowrap">This long text will not wrap and will overflow.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-nowrap"&gt;This long text will not wrap...&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-truncate</div>
+                <div class="card-body">
+                    <div class="demo-box" style="width: 150px;">
+                        <p class="text-truncate">This long text will be truncated with an ellipsis.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-truncate"&gt;This long text will be truncated...&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-pre-wrap</div>
+                <div class="card-body">
+                    <div class="demo-box" style="width: 150px;">
+                        <p class="text-pre-wrap">This text  preserves   spaces  and
+line breaks but will wrap when needed.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-pre-wrap"&gt;This text  preserves   spaces...&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Text Transformation</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">.text-lowercase</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-lowercase">Lowercased TEXT.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-lowercase"&gt;Lowercased TEXT.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-uppercase</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-uppercase">Uppercased text.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-uppercase"&gt;Uppercased text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-capitalize</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-capitalize">capitalized text.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-capitalize"&gt;capitalized text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Font Weight and Italics</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">.font-weight-light</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="font-weight-light">Light weight text.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="font-weight-light"&gt;Light weight text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.font-weight-lighter</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="font-weight-lighter">Lighter weight text.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="font-weight-lighter"&gt;Lighter weight text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.font-weight-normal</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="font-weight-normal">Normal weight text.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="font-weight-normal"&gt;Normal weight text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.font-weight-bold</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="font-weight-bold">Bold weight text.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="font-weight-bold"&gt;Bold weight text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.font-weight-bolder</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="font-weight-bolder">Bolder weight text.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="font-weight-bolder"&gt;Bolder weight text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.font-italic</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="font-italic">Italic text.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="font-italic"&gt;Italic text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Text Colors</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">.text-primary</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-primary">Primary colored text.</p>
+                        <a href="#" class="text-primary">Primary colored link</a>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-primary"&gt;Primary colored text.&lt;/p&gt;
+&lt;a href="#" class="text-primary"&gt;Primary colored link&lt;/a&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-secondary</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-secondary">Secondary colored text.</p>
+                        <a href="#" class="text-secondary">Secondary colored link</a>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-secondary"&gt;Secondary colored text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-success</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-success">Success colored text.</p>
+                        <a href="#" class="text-success">Success colored link</a>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-success"&gt;Success colored text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-danger</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-danger">Danger colored text.</p>
+                        <a href="#" class="text-danger">Danger colored link</a>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-danger"&gt;Danger colored text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-warning</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-warning">Warning colored text.</p>
+                        <a href="#" class="text-warning">Warning colored link</a>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-warning"&gt;Warning colored text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-info</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-info">Info colored text.</p>
+                        <a href="#" class="text-info">Info colored link</a>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-info"&gt;Info colored text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-light</div>
+                <div class="card-body">
+                    <div class="demo-box" style="background-color: #343a40;">
+                        <p class="text-light">Light colored text (on dark background).</p>
+                        <a href="#" class="text-light">Light colored link</a>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-light"&gt;Light colored text...&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-dark</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-dark">Dark colored text.</p>
+                        <a href="#" class="text-dark">Dark colored link</a>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-dark"&gt;Dark colored text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-body</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-body">Body colored text (default).</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-body"&gt;Body colored text...&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-muted</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-muted">Muted colored text.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-muted"&gt;Muted colored text.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-black-50</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-black-50">Black with 50% opacity.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-black-50"&gt;Black with 50% opacity.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-white-50</div>
+                <div class="card-body">
+                    <div class="demo-box" style="background-color: #343a40;">
+                        <p class="text-white-50">White with 50% opacity (on dark background).</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-white-50"&gt;White with 50% opacity...&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Other Text Utilities</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">.text-hide</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-hide">This text is hidden but still accessible to screen readers.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-hide"&gt;This text is hidden...&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-decoration-none</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <a href="#" class="text-decoration-none">Link with no underline</a>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;a href="#" class="text-decoration-none"&gt;Link with no underline&lt;/a&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-break</div>
+                <div class="card-body">
+                    <div class="demo-box" style="width: 150px;">
+                        <p class="text-break">VeryLongWordWithoutSpacesThatWillBreakToNextLine</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-break"&gt;VeryLongWordWithoutSpaces...&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-reset</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p style="color: red;">Red text with <span class="text-reset">inherited color</span>.</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p style="color: red;"&gt;Red text with &lt;span class="text-reset"&gt;inherited color&lt;/span&gt;.&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Font Sizing</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">.text-2x</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-2x">Text at 2x size</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-2x"&gt;Text at 2x size&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-3x</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-3x">Text at 3x size</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-3x"&gt;Text at 3x size&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-4x</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-4x">Text at 4x size</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-4x"&gt;Text at 4x size&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">.text-5x</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="text-5x">Text at 5x size</p>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <code>&lt;p class="text-5x"&gt;Text at 5x size&lt;/p&gt;</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Line Height</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">.lh-1 to .lh-11</div>
+                <div class="card-body">
+                    <div class="demo-box">
+                        <p class="lh-1" style="background-color: #f0f0f0; margin-bottom: 5px;">Line height 1</p>
+                        <p class="lh-2" style="background-color: #f0f0f0; margin-bottom: 5px;">Line height 1.1</p>
+                        <p class="lh-3" style="background-color: #f0f0f0; margin-bottom: 5px;">Line height 1.2</p>
+                        <p class="lh-4" style="background-color: #f0f0f0; margin-bottom: 5px;">Line height 1.3</p>
+                        <p class="lh-5" style="background-color: #f0f0f0; margin-bottom: 5px;">Line height 1.4</p>
+                        <p class="lh-6" style="background-color: #f0f0f0; margin-bottom: 5px;">Line height 1.5</p>
+                        <p class="lh-7" style="background-color: #f0f0f0; margin-bottom: 5px;">Line height 1.6</p>
+                        <p class="lh-8" style="background-color: #f0f0f0; margin-bottom: 5px;">Line height 1.7</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body>
+</html>

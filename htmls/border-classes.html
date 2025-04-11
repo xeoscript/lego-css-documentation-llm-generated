@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Border Utility System Documentation</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2980b9;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --light-bg: #f9f9f9;
+            --dark-bg: #2c3e50;
+            --text: #333;
+            --text-light: #ecf0f1;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: var(--light-bg);
+        }
+        h1, h2, h3, h4 {
+            color: var(--primary);
+            margin-top: 1.5em;
+        }
+        h1 {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+        h2 {
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+        }
+        h3 {
+            color: var(--secondary);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background: #eef;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        .code-container {
+            position: relative;
+            margin: 20px 0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        pre {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            padding: 15px;
+            margin: 0;
+            overflow-x: auto;
+            line-height: 1.4;
+            tab-size: 4;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            color: inherit;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        .copy-btn.copied {
+            background: var(--success);
+        }
+        .note {
+            background-color: #e7f5fe;
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .example {
+            background-color: #f0fff0;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .demo-box {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .border-demo {
+            padding: 15px;
+            margin: 5px;
+            background-color: #f8f9fa;
+            min-width: 150px;
+            text-align: center;
+        }
+        .radius-demo {
+            width: 100px;
+            height: 100px;
+            background-color: var(--primary);
+            margin: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .color-palette {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .color-swatch {
+            width: 60px;
+            height: 60px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            text-align: center;
+            color: white;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+        }
+    </style>
+    <link rel="stylesheet" href="./assets/sidebar.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="fl-x fl-a-c"><img src="./assets/logo/xeo-lego.png" class="logo-sm" alt=""><span class="ml-1"><b>&nbsp; Lego CSS Docs</b></span></div>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li><a href="../index.html">Grid System</a></li>
+      
+            <!-- Dropdown Menu -->
+            <!-- <li class="dropdown">
+              <input type="checkbox" id="doc-toggle">
+              <label for="doc-toggle" class="dropdown-label">Documentation</label>
+              <ul class="dropdown-menu">
+                <li><a href="#grid-system">Grid System</a></li>
+                <li><a href="#utilities">Utilities</a></li>
+                <li><a href="#customization">Customization</a></li>
+              </ul>
+            </li> -->
+      
+            <li><a href="./margin-padding.html">Margin & Padding</a></li>
+            <li><a href="./position-and-other-helpers.html">Position</a></li>
+            <li><a href="./flex-alignments.html">Flex Alignments</a></li>
+            <li><a href="./display-utility.html">Display</a></li>
+            <li><a href="./border-classes.html" class="active">Borders</a></li>
+            <li><a href="./accent-color-utility.html">Accent Colors</a></li>
+            <li><a href="./box-shadows.html">Box Shadow</a></li>
+            <li><a href="./text-utility.html" class="active">Text Utility</a></li>
+
+            <li><a href="./flex-alignments.html" target="_blank" class="github-btn">GitHub</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <main>
+    <h1>Border Utility System</h1>
+    
+    <p>A comprehensive set of utility classes for borders, including width, color, and radius variations.</p>
+    
+    <div class="note">
+        <strong>Note:</strong> All border utilities use CSS custom properties for easy theming and customization.
+    </div>
+    
+    <h2>Border Width Classes</h2>
+    
+    <p>Control border width with these utility classes (values from 0.5px to 5rem):</p>
+    
+    <div class="example">
+        <h3>All Borders</h3>
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre><code>&lt;!-- Apply to all borders --&gt;
+&lt;div class="b-1"&gt;1px border&lt;/div&gt;
+&lt;div class="b-2"&gt;2px border&lt;/div&gt;
+&lt;div class="b-3"&gt;3px border&lt;/div&gt;
+&lt;div class="b-4"&gt;4px border&lt;/div&gt;
+&lt;div class="b-5"&gt;5px border&lt;/div&gt;</code></pre>
+        </div>
+        
+        <div class="demo-box">
+            <div class="border-demo b-1" style="border: 1px solid var(--border-color)">b-1</div>
+            <div class="border-demo b-2" style="border: 2px solid var(--border-color)">b-2</div>
+            <div class="border-demo b-3" style="border: 3px solid var(--border-color)">b-3</div>
+            <div class="border-demo b-4" style="border: 4px solid var(--border-color)">b-4</div>
+            <div class="border-demo b-5" style="border: 5px solid var(--border-color)">b-5</div>
+        </div>
+        
+        <h3>Directional Borders</h3>
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre><code>&lt;!-- Top border --&gt;
+&lt;div class="bt-2"&gt;Top border&lt;/div&gt;
+
+&lt;!-- Bottom border --&gt;
+&lt;div class="bb-3"&gt;Bottom border&lt;/div&gt;
+
+&lt;!-- Left border --&gt;
+&lt;div class="bl-1"&gt;Left border&lt;/div&gt;
+
+&lt;!-- Right border --&gt;
+&lt;div class="br-4"&gt;Right border&lt;/div&gt;
+
+&lt;!-- Vertical borders (top and bottom) --&gt;
+&lt;div class="by-2"&gt;Vertical borders&lt;/div&gt;
+
+&lt;!-- Horizontal borders (left and right) --&gt;
+&lt;div class="bx-3"&gt;Horizontal borders&lt;/div&gt;</code></pre>
+        </div>
+        
+        <div class="demo-box">
+            <div class="border-demo" style="border-top: 2px solid var(--border-color)">bt-2</div>
+            <div class="border-demo" style="border-bottom: 3px solid var(--border-color)">bb-3</div>
+            <div class="border-demo" style="border-left: 1px solid var(--border-color)">bl-1</div>
+            <div class="border-demo" style="border-right: 4px solid var(--border-color)">br-4</div>
+            <div class="border-demo" style="border-top: 2px solid var(--border-color); border-bottom: 2px solid var(--border-color)">by-2</div>
+            <div class="border-demo" style="border-left: 3px solid var(--border-color); border-right: 3px solid var(--border-color)">bx-3</div>
+        </div>
+    </div>
+    
+    <h2>Border Color Classes</h2>
+    
+    <p>Control border color with these utility classes:</p>
+    
+    <div class="color-palette">
+        <div style="background-color: var(--color-base);" class="color-swatch">base</div>
+        <div style="background-color: var(--color-primary);" class="color-swatch">primary</div>
+        <div style="background-color: var(--color-secondary);" class="color-swatch">secondary</div>
+        <div style="background-color: var(--color-third);" class="color-swatch">third</div>
+        <div style="background-color: var(--color-success);" class="color-swatch">success</div>
+        <div style="background-color: var(--color-danger);" class="color-swatch">danger</div>
+        <div style="background-color: var(--color-warning);" class="color-swatch">warning</div>
+    </div>
+    
+    <div class="example">
+        <h3>Basic Color Classes</h3>
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre><code>&lt;div class="b-2 b-primary"&gt;Primary border&lt;/div&gt;
+&lt;div class="b-2 b-secondary"&gt;Secondary border&lt;/div&gt;
+&lt;div class="b-2 b-third"&gt;Third border&lt;/div&gt;
+&lt;div class="b-2 b-success"&gt;Success border&lt;/div&gt;
+&lt;div class="b-2 b-danger"&gt;Danger border&lt;/div&gt;
+&lt;div class="b-2 b-warning"&gt;Warning border&lt;/div&gt;</code></pre>
+        </div>
+        
+        <div class="demo-box">
+            <div class="border-demo b-2" style="border-color: var(--color-primary)">b-primary</div>
+            <div class="border-demo b-2" style="border-color: var(--color-secondary)">b-secondary</div>
+            <div class="border-demo b-2" style="border-color: var(--color-third)">b-third</div>
+            <div class="border-demo b-2" style="border-color: var(--color-success)">b-success</div>
+            <div class="border-demo b-2" style="border-color: var(--color-danger)">b-danger</div>
+            <div class="border-demo b-2" style="border-color: var(--color-warning)">b-warning</div>
+        </div>
+        
+        <h3>Color Variants</h3>
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre><code>&lt;!-- Light variant --&gt;
+&lt;div class="b-2 b-primary-light"&gt;Light primary border&lt;/div&gt;
+
+&lt;!-- Dark variant --&gt;
+&lt;div class="b-2 b-primary-dark"&gt;Dark primary border&lt;/div&gt;
+
+&lt;!-- Generic light/dark --&gt;
+&lt;div class="b-2 b-light"&gt;Light border&lt;/div&gt;
+&lt;div class="b-2 b-dark"&gt;Dark border&lt;/div&gt;</code></pre>
+        </div>
+        
+        <div class="demo-box">
+            <div class="border-demo b-2" style="border-color: var(--color-primary-hover)">b-primary-light</div>
+            <div class="border-demo b-2" style="border-color: var(--color-primary-active)">b-primary-dark</div>
+            <div class="border-demo b-2" style="border-color: var(--border-color-light)">b-light</div>
+            <div class="border-demo b-2" style="border-color: var(--border-color-dark)">b-dark</div>
+        </div>
+    </div>
+    
+    <h2>Border Radius Classes</h2>
+    
+    <p>Control border radius with these utility classes (values from 0.25rem to 4rem):</p>
+    
+    <div class="example">
+        <h3>Standard Radius</h3>
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre><code>&lt;div class="round-1 b-2"&gt;Small radius&lt;/div&gt;
+&lt;div class="round-3 b-2"&gt;Medium radius&lt;/div&gt;
+&lt;div class="round-5 b-2"&gt;Large radius&lt;/div&gt;
+&lt;div class="round-pill b-2"&gt;Pill shape&lt;/div&gt;
+&lt;div class="round-full b-2"&gt;Circle&lt;/div&gt;</code></pre>
+        </div>
+        
+        <div class="demo-box">
+            <div class="radius-demo b-2" style="border-radius: 0.25rem">round-1</div>
+            <div class="radius-demo b-2" style="border-radius: 0.75rem">round-3</div>
+            <div class="radius-demo b-2" style="border-radius: 1.5rem">round-5</div>
+            <div class="radius-demo b-2" style="border-radius: 5000rem">round-pill</div>
+            <div class="radius-demo b-2" style="border-radius: 50%">round-full</div>
+        </div>
+        
+        <h3>Wrapper-Child Radius</h3>
+        <p>Apply radius to first/last child elements within a container:</p>
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre><code>&lt;div class="round-wc-3"&gt;
+  &lt;div class="b-2"&gt;First child gets top radius&lt;/div&gt;
+  &lt;div class="b-2"&gt;Middle child&lt;/div&gt;
+  &lt;div class="b-2"&gt;Last child gets bottom radius&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        
+        <div style="width: 200px; margin: 15px 0;">
+            <div style="border-top-left-radius: 0.75rem; border-top-right-radius: 0.75rem; border: 2px solid var(--border-color); padding: 10px;">First child</div>
+            <div style="border-left: 2px solid var(--border-color); border-right: 2px solid var(--border-color); padding: 10px;">Middle child</div>
+            <div style="border-bottom-left-radius: 0.75rem; border-bottom-right-radius: 0.75rem; border: 2px solid var(--border-color); padding: 10px;">Last child</div>
+        </div>
+        
+        <h3>Hover and Pseudo-element Variants</h3>
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre><code>&lt;!-- Hover effect --&gt;
+&lt;div class="round-3-h b-2"&gt;Hover to apply radius&lt;/div&gt;
+
+&lt;!-- Before/after pseudo-elements --&gt;
+&lt;div class="round-3-b b-2"&gt;Radius on pseudo-elements&lt;/div&gt;</code></pre>
+        </div>
+    </div>
+    
+    <h2>Combining Utilities</h2>
+    
+    <div class="example">
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre><code>&lt;!-- Combined border utilities --&gt;
+&lt;div class="b-3 b-primary round-4"&gt;
+  Styled box with 3px primary border and medium radius
+&lt;/div&gt;
+
+&lt;!-- Directional borders with different colors --&gt;
+&lt;div class="bt-2 b-primary bb-3 b-danger round-2"&gt;
+  Top primary border, bottom danger border
+&lt;/div&gt;</code></pre>
+        </div>
+        
+        <div class="demo-box">
+            <div class="border-demo" style="border: 3px solid var(--color-primary); border-radius: 1rem;">
+                Combined example
+            </div>
+            <div class="border-demo" style="border-top: 2px solid var(--color-primary); border-bottom: 3px solid var(--color-danger); border-radius: 0.5rem;">
+                Directional colors
+            </div>
+        </div>
+    </div>
+</main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add copy functionality to all copy buttons
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            
+            copyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const codeBlock = this.parentNode.querySelector('pre code');
+                    const textToCopy = codeBlock.textContent;
+                    
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        // Visual feedback
+                        const originalText = this.textContent;
+                        this.textContent = 'Copied!';
+                        this.classList.add('copied');
+                        
+                        // Reset after 2 seconds
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                            this.classList.remove('copied');
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy text: ', err);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

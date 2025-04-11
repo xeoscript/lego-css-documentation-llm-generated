@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 240px;
+    background-color: #f7f7f7;
+    border-right: 1px solid #ddd;
+    height: 100vh;
+    padding: 20px 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  
+  .sidebar-header h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+  }
+  
+  .sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar-nav ul li {
+    margin: 10px 0;
+  }
+  
+  .sidebar-nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 8px 12px;
+    display: block;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sidebar-nav ul li a:hover,
+  .sidebar-nav ul li a.active {
+    background-color: #007BFF;
+    color: #fff;
+  }
+  
+  .github-btn {
+    background-color: #333;
+    color: #fff !important;
+    font-weight: bold;
+  }
+
+  /* ... previous styles ... */
+
+.sidebar-nav ul li.dropdown {
+    position: relative;
+  }
+  
+  .dropdown-label {
+    display: block;
+    padding: 8px 12px;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dropdown-label:hover {
+    background-color: #e6f0ff;
+  }
+  
+  /* Hide native checkbox */
+  .dropdown input[type="checkbox"] {
+    display: none;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    list-style: none;
+    padding-left: 15px;
+    margin-top: 5px;
+  }
+  
+  .dropdown-menu li a {
+    font-weight: 400;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #444;
+  }
+  
+  .dropdown input[type="checkbox"]:checked ~ .dropdown-menu {
+    display: block;
+  }
+
+  main {
+    margin-left: 240px;
+    padding: 20px;
+  }
+  .logo-sm{
+    height: 2.5rem;
+  }

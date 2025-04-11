@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Margin & Padding Utility Classes</title>
+    <style>
+        /* Base styles for documentation */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            /* max-width: 1200px; */
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+            margin-top: 1.5em;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        
+        .example-container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            background: white;
+            position: relative;
+        }
+        
+        .demo-box {
+            background: #3498db;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 100px;
+            min-height: 60px;
+            padding: 10px;
+            margin: 5px;
+        }
+        
+        .demo-container {
+            border: 2px dashed #7f8c8d;
+            position: relative;
+            margin: 20px 0;
+            padding: 10px;
+        }
+        
+        .demo-parent {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #34495e;
+            color: white;
+            border: none;
+            padding: 3px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .copy-btn:hover {
+            background: #2c3e50;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .class-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .class-name {
+            font-weight: bold;
+            color: #2980b9;
+            margin-bottom: 5px;
+            font-family: monospace;
+            font-size: 15px;
+        }
+        
+        .class-desc {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .class-props {
+            font-family: monospace;
+            background: #f0f0f0;
+            padding: 3px 5px;
+            border-radius: 3px;
+            font-size: 13px;
+            display: inline-block;
+            margin-bottom: 5px;
+            white-space: pre-wrap;
+        }
+        
+        .spacer-example {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #3498db;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        .responsive-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .responsive-table th, .responsive-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .responsive-table th {
+            background-color: #f2f2f2;
+        }
+        
+        .responsive-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+    <link rel="stylesheet" href="./assets/sidebar.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="fl-x fl-a-c"><img src="./assets/logo/xeo-lego.png" class="logo-sm" alt=""><span class="ml-1"><b>&nbsp; Lego CSS Docs</b></span></div>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li><a href="../index.html">Grid System</a></li>
+      
+            <!-- Dropdown Menu -->
+            <!-- <li class="dropdown">
+              <input type="checkbox" id="doc-toggle">
+              <label for="doc-toggle" class="dropdown-label">Documentation</label>
+              <ul class="dropdown-menu">
+                <li><a href="#grid-system">Grid System</a></li>
+                <li><a href="#utilities">Utilities</a></li>
+                <li><a href="#customization">Customization</a></li>
+              </ul>
+            </li> -->
+      
+            <li><a href="./margin-padding.html" class="active">Margin & Padding</a></li>
+            <li><a href="./position-and-other-helpers.html">Position</a></li>
+            <li><a href="./flex-alignments.html">Flex Alignments</a></li>
+            <li><a href="./display-utility.html">Display</a></li>
+            <li><a href="./border-classes.html">Borders</a></li>
+            <li><a href="./accent-color-utility.html" class="">Accent Colors</a></li>
+            <li><a href="./box-shadows.html">Box Shadow</a></li>
+            <li><a href="./text-utility.html" class="active">Text Utility</a></li>
+
+            <li><a href="./flex-alignments.html" target="_blank" class="github-btn">GitHub</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <main>
+    <h1>Margin & Padding Utility Classes</h1>
+    
+    <section class="section">
+        <h2>Spacing System</h2>
+        <p>All spacing utilities are generated from a Sass map and use CSS custom properties (variables) for consistent spacing throughout your project.</p>
+        
+        <h3>Spacer Scale</h3>
+        <p>The default spacer scale is based on a root value and uses a modular scale for consistent spacing:</p>
+        
+        <div class="example-container">
+            <div style="margin-bottom: 15px;">
+                <span class="spacer-example" style="width: calc(0.25 * var(--spacer-base)); height: calc(0.25 * var(--spacer-base));"></span> 0.25x (--spacer-1)
+            </div>
+            <div style="margin-bottom: 15px;">
+                <span class="spacer-example" style="width: calc(0.5 * var(--spacer-base)); height: calc(0.5 * var(--spacer-base));"></span> 0.5x (--spacer-2)
+            </div>
+            <div style="margin-bottom: 15px;">
+                <span class="spacer-example" style="width: var(--spacer-base); height: var(--spacer-base);"></span> 1x (--spacer-3, base value)
+            </div>
+            <div style="margin-bottom: 15px;">
+                <span class="spacer-example" style="width: calc(1.5 * var(--spacer-base)); height: calc(1.5 * var(--spacer-base));"></span> 1.5x (--spacer-4)
+            </div>
+            <div style="margin-bottom: 15px;">
+                <span class="spacer-example" style="width: calc(3 * var(--spacer-base)); height: calc(3 * var(--spacer-base));"></span> 3x (--spacer-5)
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Margin Utilities</h2>
+        <p>Assign margin to all sides or specific sides of an element using responsive classes.</p>
+        
+        <h3>Basic Margin Classes</h3>
+        <p>Format: <code>.m{direction}-{size}</code> where direction is optional and size corresponds to the spacer scale.</p>
+        
+        <div class="grid">
+            <div class="class-card">
+                <div class="class-name">.m-{size}</div>
+                <div class="class-props">margin: var(--spacer-{size}) !important;</div>
+                <div class="class-desc">Applies margin to all sides</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mt-{size}</div>
+                <div class="class-props">margin-top: var(--spacer-{size}) !important;</div>
+                <div class="class-desc">Applies margin to top only</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mr-{size}</div>
+                <div class="class-props">margin-right: var(--spacer-{size}) !important;</div>
+                <div class="class-desc">Applies margin to right only</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mb-{size}</div>
+                <div class="class-props">margin-bottom: var(--spacer-{size}) !important;</div>
+                <div class="class-desc">Applies margin to bottom only</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.ml-{size}</div>
+                <div class="class-props">margin-left: var(--spacer-{size}) !important;</div>
+                <div class="class-desc">Applies margin to left only</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mx-{size}</div>
+                <div class="class-props">margin-left: var(--spacer-{size}) !important;
+margin-right: var(--spacer-{size}) !important;</div>
+                <div class="class-desc">Applies margin to left and right</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.my-{size}</div>
+                <div class="class-props">margin-top: var(--spacer-{size}) !important;
+margin-bottom: var(--spacer-{size}) !important;</div>
+                <div class="class-desc">Applies margin to top and bottom</div>
+            </div>
+        </div>
+        
+        <h3>Examples</h3>
+        
+        <div class="example-container">
+            <h4>Basic Margin Usage</h4>
+            <div class="demo-container">
+                <div class="demo-box m-3">.m-3</div>
+                <div class="demo-box mt-4">.mt-4</div>
+                <div class="demo-box mr-2">.mr-2</div>
+                <div class="demo-box mb-5">.mb-5</div>
+                <div class="demo-box ml-1">.ml-1</div>
+                <div class="demo-box mx-3">.mx-3</div>
+                <div class="demo-box my-4">.my-4</div>
+            </div>
+            
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>
+&lt;div class="m-3"&gt;Margin on all sides&lt;/div&gt;
+&lt;div class="mt-4"&gt;Margin top only&lt;/div&gt;
+&lt;div class="mr-2"&gt;Margin right only&lt;/div&gt;
+&lt;div class="mb-5"&gt;Margin bottom only&lt;/div&gt;
+&lt;div class="ml-1"&gt;Margin left only&lt;/div&gt;
+&lt;div class="mx-3"&gt;Margin left and right&lt;/div&gt;
+&lt;div class="my-4"&gt;Margin top and bottom&lt;/div&gt;
+                </code>
+            </div>
+        </div>
+        
+        <h3>Negative Margin Classes</h3>
+        <p>Format: <code>.m{direction}-n{size}</code> where direction is optional and size corresponds to the spacer scale.</p>
+        
+        <div class="grid">
+            <div class="class-card">
+                <div class="class-name">.m-n{size}</div>
+                <div class="class-props">margin: calc(var(--spacer-{size}) * -1) !important;</div>
+                <div class="class-desc">Applies negative margin to all sides</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mt-n{size}</div>
+                <div class="class-props">margin-top: calc(var(--spacer-{size}) * -1) !important;</div>
+                <div class="class-desc">Applies negative margin to top only</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mr-n{size}</div>
+                <div class="class-props">margin-right: calc(var(--spacer-{size}) * -1) !important;</div>
+                <div class="class-desc">Applies negative margin to right only</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mb-n{size}</div>
+                <div class="class-props">margin-bottom: calc(var(--spacer-{size}) * -1) !important;</div>
+                <div class="class-desc">Applies negative margin to bottom only</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.ml-n{size}</div>
+                <div class="class-props">margin-left: calc(var(--spacer-{size}) * -1) !important;</div>
+                <div class="class-desc">Applies negative margin to left only</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mx-n{size}</div>
+                <div class="class-props">margin-left: calc(var(--spacer-{size}) * -1) !important;
+margin-right: calc(var(--spacer-{size}) * -1) !important;</div>
+                <div class="class-desc">Applies negative margin to left and right</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.my-n{size}</div>
+                <div class="class-props">margin-top: calc(var(--spacer-{size}) * -1) !important;
+margin-bottom: calc(var(--spacer-{size}) * -1) !important;</div>
+                <div class="class-desc">Applies negative margin to top and bottom</div>
+            </div>
+        </div>
+        
+        <h3>Examples</h3>
+        
+        <div class="example-container">
+            <h4>Negative Margin Usage</h4>
+            <div class="demo-container" style="background: #f0f0f0;">
+                <div class="demo-parent">
+                    <div class="demo-box">Normal</div>
+                    <div class="demo-box ml-n3" style="background: #e74c3c;">.ml-n3</div>
+                    <div class="demo-box">Normal</div>
+                </div>
+                <div class="demo-parent" style="margin-top: 20px;">
+                    <div class="demo-box">Normal</div>
+                    <div class="demo-box mt-n2" style="background: #e74c3c;">.mt-n2</div>
+                    <div class="demo-box">Normal</div>
+                </div>
+            </div>
+            
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>
+&lt;div class="ml-n3"&gt;Negative margin left&lt;/div&gt;
+&lt;div class="mt-n2"&gt;Negative margin top&lt;/div&gt;
+                </code>
+            </div>
+        </div>
+        
+        <h3>Auto Margin Classes</h3>
+        <p>These classes set margin to auto, useful for centering or pushing elements to one side.</p>
+        
+        <div class="grid">
+            <div class="class-card">
+                <div class="class-name">.m-auto</div>
+                <div class="class-props">margin: auto !important;</div>
+                <div class="class-desc">Applies auto margin to all sides</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mt-auto</div>
+                <div class="class-props">margin-top: auto !important;</div>
+                <div class="class-desc">Applies auto margin to top only</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mr-auto</div>
+                <div class="class-props">margin-right: auto !important;</div>
+                <div class="class-desc">Applies auto margin to right only</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mb-auto</div>
+                <div class="class-props">margin-bottom: auto !important;</div>
+                <div class="class-desc">Applies auto margin to bottom only</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.ml-auto</div>
+                <div class="class-props">margin-left: auto !important;</div>
+                <div class="class-desc">Applies auto margin to left only</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mx-auto</div>
+                <div class="class-props">margin-left: auto !important;
+margin-right: auto !important;</div>
+                <div class="class-desc">Applies auto margin to left and right (horizontal centering)</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.my-auto</div>
+                <div class="class-props">margin-top: auto !important;
+margin-bottom: auto !important;</div>
+                <div class="class-desc">Applies auto margin to top and bottom</div>
+            </div>
+        </div>
+        
+        <h3>Examples</h3>
+        
+        <div class="example-container">
+            <h4>Auto Margin Usage</h4>
+            <div class="demo-container" style="display: flex; height: 200px;">
+                <div class="demo-box mr-auto">.mr-auto</div>
+                <div class="demo-box">Normal</div>
+            </div>
+            
+            <div class="demo-container" style="display: flex; flex-direction: column; height: 200px;">
+                <div class="demo-box mb-auto">.mb-auto</div>
+                <div class="demo-box">Normal</div>
+            </div>
+            
+            <div class="demo-container" style="text-align: center;">
+                <div class="demo-box mx-auto" style="display: block; width: 200px;">.mx-auto</div>
+            </div>
+            
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>
+&lt;div style="display: flex;"&gt;
+    &lt;div class="mr-auto"&gt;Pushed to left&lt;/div&gt;
+    &lt;div&gt;Normal&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div style="display: flex; flex-direction: column;"&gt;
+    &lt;div class="mb-auto"&gt;Pushed to top&lt;/div&gt;
+    &lt;div&gt;Normal&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div style="text-align: center;"&gt;
+    &lt;div class="mx-auto" style="display: block; width: 200px;"&gt;Centered&lt;/div&gt;
+&lt;/div&gt;
+                </code>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Padding Utilities</h2>
+        <p>Assign padding to all sides or specific sides of an element using responsive classes.</p>
+        
+        <h3>Basic Padding Classes</h3>
+        <p>Format: <code>.p{direction}-{size}</code> where direction is optional and size corresponds to the spacer scale.</p>
+        
+        <div class="grid">
+            <div class="class-card">
+                <div class="class-name">.p-{size}</div>
+                <div class="class-props">padding: var(--spacer-{size}) !important;</div>
+                <div class="class-desc">Applies padding to all sides</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.pt-{size}</div>
+                <div class="class-props">padding-top: var(--spacer-{size}) !important;</div>
+                <div class="class-desc">Applies padding to top only</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.pr-{size}</div>
+                <div class="class-props">padding-right: var(--spacer-{size}) !important;</div>
+                <div class="class-desc">Applies padding to right only</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.pb-{size}</div>
+                <div class="class-props">padding-bottom: var(--spacer-{size}) !important;</div>
+                <div class="class-desc">Applies padding to bottom only</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.pl-{size}</div>
+                <div class="class-props">padding-left: var(--spacer-{size}) !important;</div>
+                <div class="class-desc">Applies padding to left only</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.px-{size}</div>
+                <div class="class-props">padding-left: var(--spacer-{size}) !important;
+padding-right: var(--spacer-{size}) !important;</div>
+                <div class="class-desc">Applies padding to left and right</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.py-{size}</div>
+                <div class="class-props">padding-top: var(--spacer-{size}) !important;
+padding-bottom: var(--spacer-{size}) !important;</div>
+                <div class="class-desc">Applies padding to top and bottom</div>
+            </div>
+        </div>
+        
+        <h3>Examples</h3>
+        
+        <div class="example-container">
+            <h4>Basic Padding Usage</h4>
+            <div class="demo-parent">
+                <div class="demo-box p-3">.p-3</div>
+                <div class="demo-box pt-4">.pt-4</div>
+                <div class="demo-box pr-2">.pr-2</div>
+                <div class="demo-box pb-5">.pb-5</div>
+                <div class="demo-box pl-1">.pl-1</div>
+                <div class="demo-box px-3">.px-3</div>
+                <div class="demo-box py-4">.py-4</div>
+            </div>
+            
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>
+&lt;div class="p-3"&gt;Padding on all sides&lt;/div&gt;
+&lt;div class="pt-4"&gt;Padding top only&lt;/div&gt;
+&lt;div class="pr-2"&gt;Padding right only&lt;/div&gt;
+&lt;div class="pb-5"&gt;Padding bottom only&lt;/div&gt;
+&lt;div class="pl-1"&gt;Padding left only&lt;/div&gt;
+&lt;div class="px-3"&gt;Padding left and right&lt;/div&gt;
+&lt;div class="py-4"&gt;Padding top and bottom&lt;/div&gt;
+                </code>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Special Spacing Utilities</h2>
+        <p>These utilities provide semantic spacing for specific UI components.</p>
+        
+        <h3>Element Separators</h3>
+        <div class="grid">
+            <div class="class-card">
+                <div class="class-name">.m-element</div>
+                <div class="class-props">margin: var(--element-separator);</div>
+                <div class="class-desc">Standard margin between elements</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mt-element</div>
+                <div class="class-props">margin-top: var(--element-separator);</div>
+                <div class="class-desc">Top margin between elements</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mb-element</div>
+                <div class="class-props">margin-bottom: var(--element-separator);</div>
+                <div class="class-desc">Bottom margin between elements</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.ml-element</div>
+                <div class="class-props">margin-left: var(--element-separator);</div>
+                <div class="class-desc">Left margin between elements</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mr-element</div>
+                <div class="class-props">margin-right: var(--element-separator);</div>
+                <div class="class-desc">Right margin between elements</div>
+            </div>
+        </div>
+        
+        <h3>Form Separators</h3>
+        <div class="grid">
+            <div class="class-card">
+                <div class="class-name">.m-form</div>
+                <div class="class-props">margin: var(--form-separator);</div>
+                <div class="class-desc">Standard margin around form elements</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mt-form</div>
+                <div class="class-props">margin-top: var(--form-separator);</div>
+                <div class="class-desc">Top margin for form elements</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mb-form</div>
+                <div class="class-props">margin-bottom: var(--form-separator);</div>
+                <div class="class-desc">Bottom margin for form elements</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.ml-form</div>
+                <div class="class-props">margin-left: var(--form-separator);</div>
+                <div class="class-desc">Left margin for form elements</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mr-form</div>
+                <div class="class-props">margin-right: var(--form-separator);</div>
+                <div class="class-desc">Right margin for form elements</div>
+            </div>
+        </div>
+        
+        <h3>Block Separators</h3>
+        <div class="grid">
+            <div class="class-card">
+                <div class="class-name">.m-block</div>
+                <div class="class-props">margin: var(--container-separator);</div>
+                <div class="class-desc">Standard margin around content blocks</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mt-block</div>
+                <div class="class-props">margin-top: var(--container-separator);</div>
+                <div class="class-desc">Top margin for content blocks</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mb-block</div>
+                <div class="class-props">margin-bottom: var(--container-separator);</div>
+                <div class="class-desc">Bottom margin for content blocks</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.ml-block</div>
+                <div class="class-props">margin-left: var(--container-separator);</div>
+                <div class="class-desc">Left margin for content blocks</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.mr-block</div>
+                <div class="class-props">margin-right: var(--container-separator);</div>
+                <div class="class-desc">Right margin for content blocks</div>
+            </div>
+        </div>
+        
+        <h3>Spacing Between Children</h3>
+        <div class="grid">
+            <div class="class-card">
+                <div class="class-name">.spy-{size} > * + *</div>
+                <div class="class-props">margin-top: var(--spacer-{size});
+margin-bottom: var(--spacer-{size});</div>
+                <div class="class-desc">Adds vertical spacing between child elements</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.spx-{size} > * + *</div>
+                <div class="class-props">margin-right: var(--spacer-{size});
+margin-left: var(--spacer-{size});</div>
+                <div class="class-desc">Adds horizontal spacing between child elements</div>
+            </div>
+        </div>
+        
+        <h3>Examples</h3>
+        
+        <div class="example-container">
+            <h4>Spacing Between Children</h4>
+            <div class="spy-3" style="border: 1px dashed #ccc; padding: 10px;">
+                <div class="demo-box">Item 1</div>
+                <div class="demo-box">Item 2</div>
+                <div class="demo-box">Item 3</div>
+            </div>
+            
+            <div class="spx-2 demo-parent" style="border: 1px dashed #ccc; padding: 10px; margin-top: 20px;">
+                <div class="demo-box">Item A</div>
+                <div class="demo-box">Item B</div>
+                <div class="demo-box">Item C</div>
+            </div>
+            
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>
+&lt;div class="spy-3"&gt;
+    &lt;div&gt;Item 1&lt;/div&gt;
+    &lt;div&gt;Item 2&lt;/div&gt;
+    &lt;div&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="spx-2 demo-parent"&gt;
+    &lt;div&gt;Item A&lt;/div&gt;
+    &lt;div&gt;Item B&lt;/div&gt;
+    &lt;div&gt;Item C&lt;/div&gt;
+&lt;/div&gt;
+                </code>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Responsive Spacing</h2>
+        <p>All spacing utilities include responsive variants for each breakpoint in your grid system.</p>
+        
+        <h3>Breakpoint Suffixes</h3>
+        <p>The responsive classes follow this pattern: <code>.{property}{sides}-{breakpoint}-{size}</code></p>
+        
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th>Breakpoint</th>
+                    <th>Infix</th>
+                    <th>Example</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Extra small</td>
+                    <td><em>None</em></td>
+                    <td><code>.m-3</code></td>
+                    <td>Applies to all screen sizes</td>
+                </tr>
+                <tr>
+                    <td>Small</td>
+                    <td><code>-sm</code></td>
+                    <td><code>.m-sm-3</code></td>
+                    <td>Applies to screens ≥576px</td>
+                </tr>
+                <tr>
+                    <td>Medium</td>
+                    <td><code>-md</code></td>
+                    <td><code>.m-md-3</code></td>
+                    <td>Applies to screens ≥768px</td>
+                </tr>
+                <tr>
+                    <td>Large</td>
+                    <td><code>-lg</code></td>
+                    <td><code>.m-lg-3</code></td>
+                    <td>Applies to screens ≥992px</td>
+                </tr>
+                <tr>
+                    <td>Extra large</td>
+                    <td><code>-xl</code></td>
+                    <td><code>.m-xl-3</code></td>
+                    <td>Applies to screens ≥1200px</td>
+                </tr>
+                <tr>
+                    <td>Extra extra large</td>
+                    <td><code>-xxl</code></td>
+                    <td><code>.m-xxl-3</code></td>
+                    <td>Applies to screens ≥1400px</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>Examples</h3>
+        
+        <div class="example-container">
+            <h4>Responsive Margin</h4>
+            <div class="demo-box m-2 m-md-4 m-lg-5">Responsive Margin</div>
+            
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>
+&lt;div class="m-2 m-md-4 m-lg-5"&gt;
+    Margin 2 on mobile, 4 on medium screens, 5 on large screens
+&lt;/div&gt;
+                </code>
+            </div>
+            
+            <h4>Responsive Padding</h4>
+            <div class="demo-box p-1 p-sm-3 p-xl-5">Responsive Padding</div>
+            
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>
+&lt;div class="p-1 p-sm-3 p-xl-5"&gt;
+    Padding 1 on mobile, 3 on small screens, 5 on extra large screens
+&lt;/div&gt;
+                </code>
+            </div>
+        </div>
+    </section>
+</main>
+    <script>
+        // Add copy functionality to all copy buttons
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const codeBlock = button.parentElement;
+                const code = codeBlock.querySelector('code').textContent;
+                
+                navigator.clipboard.writeText(code.trim()).then(() => {
+                    button.textContent = 'Copied!';
+                    setTimeout(() => {
+                        button.textContent = 'Copy';
+                    }, 2000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

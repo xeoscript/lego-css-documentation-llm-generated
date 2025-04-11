@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position & Overflow Helper Classes</title>
+    <style>
+        /* Base styles for documentation */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        
+        .example-container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            background: white;
+            position: relative;
+        }
+        
+        .demo-box {
+            width: 100px;
+            height: 100px;
+            background: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+        }
+        
+        .parent-box {
+            height: 200px;
+            border: 2px dashed #7f8c8d;
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #34495e;
+            color: white;
+            border: none;
+            padding: 3px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .copy-btn:hover {
+            background: #2c3e50;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .class-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .class-name {
+            font-weight: bold;
+            color: #2980b9;
+            margin-bottom: 5px;
+        }
+        
+        .class-desc {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .class-props {
+            font-family: monospace;
+            background: #f0f0f0;
+            padding: 3px 5px;
+            border-radius: 3px;
+            font-size: 13px;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+    </style>
+    <link rel="stylesheet" href="./assets/sidebar.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="fl-x fl-a-c"><img src="./assets/logo/xeo-lego.png" class="logo-sm" alt=""><span class="ml-1"><b>&nbsp; Lego CSS Docs</b></span></div>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li><a href="../index.html">Grid System</a></li>
+      
+            <!-- Dropdown Menu -->
+            <!-- <li class="dropdown">
+              <input type="checkbox" id="doc-toggle">
+              <label for="doc-toggle" class="dropdown-label">Documentation</label>
+              <ul class="dropdown-menu">
+                <li><a href="#grid-system">Grid System</a></li>
+                <li><a href="#utilities">Utilities</a></li>
+                <li><a href="#customization">Customization</a></li>
+              </ul>
+            </li> -->
+      
+            <li><a href="./margin-padding.html">Margin & Padding</a></li>
+            <li><a href="./position-and-other-helpers.html" class="active">Position</a></li>
+            <li><a href="./flex-alignments.html">Flex Alignments</a></li>
+            <li><a href="./display-utility.html">Display</a></li>
+            <li><a href="./border-classes.html">Borders</a></li>
+            <li><a href="./accent-color-utility.html" class="">Accent Colors</a></li>
+            <li><a href="./box-shadows.html">Box Shadow</a></li>
+            <li><a href="./text-utility.html" class="active">Text Utility</a></li>
+
+            <li><a href="./flex-alignments.html" target="_blank" class="github-btn">GitHub</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <main>
+    <h1>Position & Overflow Helper Classes</h1>
+    
+    <section class="section">
+        <h2>Absolute Positioning Classes</h2>
+        <p>These classes position an element absolutely within its nearest positioned ancestor.</p>
+        
+        <div class="grid">
+            <div class="class-card">
+                <div class="class-name">.abs-tl</div>
+                <div class="class-props">position: absolute; top: 0; left: 0;</div>
+                <div class="class-desc">Positions element at top-left corner of its containing block</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.abs-tr</div>
+                <div class="class-props">position: absolute; top: 0; right: 0;</div>
+                <div class="class-desc">Positions element at top-right corner of its containing block</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.abs-bl</div>
+                <div class="class-props">position: absolute; bottom: 0; left: 0;</div>
+                <div class="class-desc">Positions element at bottom-left corner of its containing block</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.abs-br</div>
+                <div class="class-props">position: absolute; bottom: 0; right: 0;</div>
+                <div class="class-desc">Positions element at bottom-right corner of its containing block</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.pos-a</div>
+                <div class="class-props">position: absolute;</div>
+                <div class="class-desc">Sets position: absolute without any positioning (useful when you want to set custom values)</div>
+            </div>
+        </div>
+        
+        <h3>Examples</h3>
+        
+        <div class="example-container">
+            <h4>Absolute Positioning within Relative Parent</h4>
+            <div class="parent-box pos-r">
+                <div class="demo-box abs-tl">TL</div>
+                <div class="demo-box abs-tr">TR</div>
+                <div class="demo-box abs-bl">BL</div>
+                <div class="demo-box abs-br">BR</div>
+            </div>
+            
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>
+&lt;div class="parent-box pos-r"&gt;
+    &lt;div class="demo-box abs-tl"&gt;TL&lt;/div&gt;
+    &lt;div class="demo-box abs-tr"&gt;TR&lt;/div&gt;
+    &lt;div class="demo-box abs-bl"&gt;BL&lt;/div&gt;
+    &lt;div class="demo-box abs-br"&gt;BR&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.parent-box {
+    position: relative;
+    height: 200px;
+    border: 2px dashed #7f8c8d;
+}
+.demo-box {
+    width: 100px;
+    height: 100px;
+}
+&lt;/style&gt;
+                </code>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Relative Positioning Classes</h2>
+        
+        <div class="grid">
+            <div class="class-card">
+                <div class="class-name">.pos-r</div>
+                <div class="class-props">position: relative;</div>
+                <div class="class-desc">Creates a new positioning context for absolutely positioned children</div>
+            </div>
+        </div>
+        
+        <h3>Example</h3>
+        
+        <div class="example-container">
+            <p>This class is typically used as a parent for absolutely positioned elements.</p>
+            
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>
+&lt;div class="pos-r"&gt;  &lt;!-- Creates positioning context --&gt;
+    &lt;div class="abs-tl"&gt;I'm positioned relative to my parent&lt;/div&gt;
+&lt;/div&gt;
+                </code>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Sticky Positioning Classes</h2>
+        <p>These classes make elements stick to the viewport when scrolling.</p>
+        
+        <div class="grid">
+            <div class="class-card">
+                <div class="class-name">.pos-st</div>
+                <div class="class-props">position: sticky; top: 0;</div>
+                <div class="class-desc">Sticks to top of viewport when scrolling</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.pos-sb</div>
+                <div class="class-props">position: sticky; bottom: 0;</div>
+                <div class="class-desc">Sticks to bottom of viewport when scrolling</div>
+            </div>
+        </div>
+        
+        <h3>Example</h3>
+        
+        <div class="example-container">
+            <div style="height: 800px; position: relative;">
+                <div class="demo-box pos-st" style="background: #e74c3c;">Sticky Top</div>
+                <p style="margin-top: 120px;">Scroll down to see the sticky behavior. The red box will stick to the top.</p>
+                <div style="height: 1000px;"></div>
+                <div class="demo-box pos-sb" style="background: #2ecc71;">Sticky Bottom</div>
+            </div>
+            
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>
+&lt;div class="demo-box pos-st" style="background: #e74c3c;"&gt;Sticky Top&lt;/div&gt;
+
+&lt;div class="demo-box pos-sb" style="background: #2ecc71;"&gt;Sticky Bottom&lt;/div&gt;
+                </code>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Fixed Positioning Classes</h2>
+        <p>These classes position elements relative to the viewport.</p>
+        
+        <div class="grid">
+            <div class="class-card">
+                <div class="class-name">.pos-ft</div>
+                <div class="class-props">position: fixed; top: 0; left: 0; right: 0;</div>
+                <div class="class-desc">Fixes element to top of viewport (full width)</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.pos-fb</div>
+                <div class="class-props">position: fixed; bottom: 0; left: 0; right: 0;</div>
+                <div class="class-desc">Fixes element to bottom of viewport (full width)</div>
+            </div>
+        </div>
+        
+        <h3>Example</h3>
+        
+        <div class="example-container">
+            <p>Note: Fixed elements are removed from the normal document flow. These examples are simulated for demonstration.</p>
+            
+            <div style="height: 200px; position: relative; overflow: hidden;">
+                <div class="demo-box" style="position: absolute; top: 0; left: 0; right: 0; background: #9b59b6;">Fixed Top (simulated)</div>
+                <div style="height: 1000px;"></div>
+                <div class="demo-box" style="position: absolute; bottom: 0; left: 0; right: 0; background: #f39c12;">Fixed Bottom (simulated)</div>
+            </div>
+            
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>
+&lt;!-- Fixed header --&gt;
+&lt;div class="pos-ft" style="background: #9b59b6; height: 60px;"&gt;
+    Fixed Header
+&lt;/div&gt;
+
+&lt;!-- Fixed footer --&gt;
+&lt;div class="pos-fb" style="background: #f39c12; height: 60px;"&gt;
+    Fixed Footer
+&lt;/div&gt;
+                </code>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Overflow Classes</h2>
+        <p>These classes control how content behaves when it overflows its container.</p>
+        
+        <div class="grid">
+            <div class="class-card">
+                <div class="class-name">.of-h</div>
+                <div class="class-props">overflow: hidden;</div>
+                <div class="class-desc">Clips overflowing content (no scrollbars)</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.of-v</div>
+                <div class="class-props">overflow: visible;</div>
+                <div class="class-desc">Content is not clipped (may overflow container)</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.of-s</div>
+                <div class="class-props">overflow: scroll;</div>
+                <div class="class-desc">Adds scrollbars regardless of whether they're needed</div>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-name">.of-a</div>
+                <div class="class-props">overflow: auto;</div>
+                <div class="class-desc">Adds scrollbars only when content overflows</div>
+            </div>
+        </div>
+        
+        <h3>Examples</h3>
+        
+        <div class="example-container">
+            <h4>Overflow: Hidden</h4>
+            <div class="of-h" style="height: 100px; width: 200px; border: 1px solid #ddd;">
+                <div class="demo-box" style="width: 300px; height: 150px;">This content is clipped</div>
+            </div>
+            
+            <h4>Overflow: Visible</h4>
+            <div class="of-v" style="height: 100px; width: 200px; border: 1px solid #ddd; margin-bottom: 50px;">
+                <div class="demo-box" style="width: 300px; height: 150px;">This content overflows</div>
+            </div>
+            
+            <h4>Overflow: Scroll</h4>
+            <div class="of-s" style="height: 100px; width: 200px; border: 1px solid #ddd;">
+                <p>This container always shows scrollbars.</p>
+                <p>Even when content fits.</p>
+            </div>
+            
+            <h4>Overflow: Auto</h4>
+            <div class="of-a" style="height: 100px; width: 200px; border: 1px solid #ddd;">
+                <p>This container shows scrollbars only when needed.</p>
+            </div>
+            
+            <div class="code-block">
+                <button class="copy-btn">Copy</button>
+                <code>
+&lt;!-- Overflow hidden --&gt;
+&lt;div class="of-h" style="height: 100px; width: 200px;"&gt;
+    Content that will be clipped if it overflows
+&lt;/div&gt;
+
+&lt;!-- Overflow visible --&gt;
+&lt;div class="of-v" style="height: 100px; width: 200px;"&gt;
+    Content that will overflow visibly
+&lt;/div&gt;
+
+&lt;!-- Overflow scroll --&gt;
+&lt;div class="of-s" style="height: 100px; width: 200px;"&gt;
+    Content with always-visible scrollbars
+&lt;/div&gt;
+
+&lt;!-- Overflow auto --&gt;
+&lt;div class="of-a" style="height: 100px; width: 200px;"&gt;
+    Content with scrollbars only when needed
+&lt;/div&gt;
+                </code>
+            </div>
+        </div>
+    </section>
+</main>
+    <script>
+        // Add copy functionality to all copy buttons
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const codeBlock = button.parentElement;
+                const code = codeBlock.querySelector('code').textContent;
+                
+                navigator.clipboard.writeText(code.trim()).then(() => {
+                    button.textContent = 'Copied!';
+                    setTimeout(() => {
+                        button.textContent = 'Copy';
+                    }, 2000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

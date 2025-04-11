@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Shadow Utilities</title>
+    <link rel="stylesheet" href="./assets/shadow.css">
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            /* max-width: 1200px; */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .shadow-card {
+            background: white;
+            border-radius: 5px;
+            padding: 15px;
+            transition: transform 0.2s;
+        }
+        
+        .shadow-demo {
+            width: 100%;
+            height: 120px;
+            background: white;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .class-name {
+            font-family: monospace;
+            font-weight: bold;
+            color: #2980b9;
+            margin-bottom: 5px;
+        }
+        
+        .class-props {
+            font-family: monospace;
+            background: #f0f0f0;
+            padding: 3px 5px;
+            border-radius: 3px;
+            font-size: 13px;
+            white-space: pre-wrap;
+            word-break: break-all;
+            margin-bottom: 5px;
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #34495e;
+            color: white;
+            border: none;
+            padding: 3px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .copy-btn:hover {
+            background: #2c3e50;
+        }
+        
+        .controls {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 5px;
+        }
+        
+        .control-group {
+            margin-bottom: 10px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        select, input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .hover-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .hover-toggle input {
+            width: auto;
+        }
+        
+        .intro {
+            margin-bottom: 30px;
+        }
+        
+        .shadow-none .shadow-demo {
+            border: 1px dashed #ccc;
+        }
+    </style>
+    <link rel="stylesheet" href="./assets/sidebar.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="fl-x fl-a-c"><img src="./assets/logo/xeo-lego.png" class="logo-sm" alt=""><span class="ml-1"><b>&nbsp; Lego CSS Docs</b></span></div>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li><a href="../index.html">Grid System</a></li>
+      
+            <!-- Dropdown Menu -->
+            <!-- <li class="dropdown">
+              <input type="checkbox" id="doc-toggle">
+              <label for="doc-toggle" class="dropdown-label">Documentation</label>
+              <ul class="dropdown-menu">
+                <li><a href="#grid-system">Grid System</a></li>
+                <li><a href="#utilities">Utilities</a></li>
+                <li><a href="#customization">Customization</a></li>
+              </ul>
+            </li> -->
+      
+            <li><a href="./margin-padding.html">Margin & Padding</a></li>
+            <li><a href="./position-and-other-helpers.html">Position</a></li>
+            <li><a href="./flex-alignments.html">Flex Alignments</a></li>
+            <li><a href="./display-utility.html">Display</a></li>
+            <li><a href="./border-classes.html">Borders</a></li>
+            <li><a href="./accent-color-utility.html" class="">Accent Colors</a></li>
+            <li><a href="./box-shadows.html" class="active">Box Shadow</a></li>
+            <li><a href="./text-utility.html" class="active">Text Utility</a></li>
+
+            <li><a href="./flex-alignments.html" target="_blank" class="github-btn">GitHub</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <main>
+    <h1>Box Shadow Utilities</h1>
+    
+    <div class="intro">
+        <p>A comprehensive collection of box-shadow utilities with hover variants. All shadows include smooth transitions for hover states.</p>
+    </div>
+    
+    <section class="section">
+        <h2>Basic Shadows</h2>
+        
+        <div class="grid">
+            <div class="shadow-card shadow-none">
+                <div class="shadow-demo bs-none">No shadow</div>
+                <div class="class-name">.bs-none</div>
+                <div class="class-props">box-shadow: none !important</div>
+            </div>
+            
+            <div class="shadow-card">
+                <div class="shadow-demo bs">Default shadow</div>
+                <div class="class-name">.bs</div>
+                <div class="class-props">box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
+transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;</div>
+            </div>
+            
+            <div class="shadow-card">
+                <div class="shadow-demo bs-light">Light shadow</div>
+                <div class="class-name">.bs-light</div>
+                <div class="class-props">box-shadow: 0 2px 8px 0 rgba(50, 50, 50, .08)</div>
+            </div>
+            
+            <div class="shadow-card">
+                <div class="shadow-demo bs-inset">Inset shadow</div>
+                <div class="class-name">.bs-inset</div>
+                <div class="class-props">box-shadow: inset 0 4px 7px 1px #fff, inset 0 -5px 20px rgba(173, 186, 204, .25), 0 2px 6px rgba(0, 21, 64, .14), 0 10px 20px rgba(0, 21, 64, .05)</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Shadow Variations</h2>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="shadowSelect">Select Shadow Style:</label>
+                <select id="shadowSelect">
+                    <option value="1">Shadow 1</option>
+                    <option value="2">Shadow 2</option>
+                    <option value="3">Shadow 3</option>
+                    <option value="4">Shadow 4</option>
+                    <option value="5">Shadow 5</option>
+                    <option value="6">Shadow 6</option>
+                    <option value="7">Shadow 7</option>
+                    <option value="8">Shadow 8</option>
+                    <option value="9">Shadow 9</option>
+                    <option value="10">Shadow 10</option>
+                    <option value="11">Shadow 11</option>
+                    <option value="12">Shadow 12</option>
+                    <option value="13">Shadow 13</option>
+                    <option value="14">Shadow 14</option>
+                    <option value="15">Shadow 15</option>
+                    <option value="16">Shadow 16</option>
+                    <option value="17">Shadow 17</option>
+                    <option value="18">Shadow 18</option>
+                    <option value="19">Shadow 19</option>
+                    <option value="20">Shadow 20</option>
+                    <option value="21">Shadow 21</option>
+                    <option value="22">Shadow 22</option>
+                    <option value="23">Shadow 23</option>
+                    <option value="24">Shadow 24</option>
+                    <option value="25">Shadow 25</option>
+                    <option value="26">Shadow 26</option>
+                    <option value="27">Shadow 27</option>
+                    <option value="28">Shadow 28</option>
+                    <option value="29">Shadow 29</option>
+                    <option value="30">Shadow 30</option>
+                    <option value="31">Shadow 31</option>
+                    <option value="32">Shadow 32</option>
+                    <option value="33">Shadow 33</option>
+                    <option value="34">Shadow 34</option>
+                    <option value="35">Shadow 35</option>
+                    <option value="36">Shadow 36</option>
+                    <option value="37">Shadow 37</option>
+                    <option value="38">Shadow 38</option>
+                    <option value="39">Shadow 39</option>
+                    <option value="40">Shadow 40</option>
+                    <option value="41">Shadow 41</option>
+                    <option value="42">Shadow 42</option>
+                    <option value="43">Shadow 43</option>
+                    <option value="44">Shadow 44</option>
+                    <option value="45">Shadow 45</option>
+                    <option value="46">Shadow 46</option>
+                    <option value="47">Shadow 47</option>
+                    <option value="48">Shadow 48</option>
+                    <option value="49">Shadow 49</option>
+                    <option value="50">Shadow 50</option>
+                    <option value="51">Shadow 51</option>
+                    <option value="52">Shadow 52</option>
+                    <option value="53">Shadow 53</option>
+                    <option value="54">Shadow 54</option>
+                    <option value="55">Shadow 55</option>
+                    <option value="56">Shadow 56</option>
+                    <option value="57">Shadow 57</option>
+                    <option value="58">Shadow 58</option>
+                    <option value="59">Shadow 59</option>
+                    <option value="60">Shadow 60</option>
+                    <option value="61">Shadow 61</option>
+                    <option value="62">Shadow 62</option>
+                    <option value="63">Shadow 63</option>
+                    <option value="64">Shadow 64</option>
+                    <option value="65">Shadow 65</option>
+                    <option value="66">Shadow 66</option>
+                    <option value="67">Shadow 67</option>
+                    <option value="68">Shadow 68</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label>Background Color:</label>
+                <input type="color" id="bgColor" value="#ffffff">
+            </div>
+            
+            <div class="control-group hover-toggle">
+                <label>Show Hover State:</label>
+                <input type="checkbox" id="hoverToggle">
+            </div>
+        </div>
+        
+        <div class="shadow-card">
+            <div class="shadow-demo" id="dynamicDemo">Dynamic Shadow Demo</div>
+            <div class="class-name" id="dynamicClass">.bs-1</div>
+            <div class="class-props" id="dynamicProps">box-shadow: rgba(150, 150, 150, .1) 0 0 20px 0</div>
+        </div>
+        
+        <div class="code-block">
+            <button class="copy-btn">Copy</button>
+            <code id="dynamicCode">&lt;div class="bs-1"&gt;Content&lt;/div&gt;</code>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>All Shadow Classes</h2>
+        <p>Each shadow class has a corresponding hover variant (e.g., .bs-1h for hover state of .bs-1).</p>
+        
+        <div class="grid" id="allShadowsGrid">
+            <!-- Generated by JavaScript -->
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Implementation Code</h2>
+        <p>These utilities are generated with SCSS:</p>
+        
+        <div class="code-block">
+            <button class="copy-btn">Copy</button>
+            <code>
+@mixin box-shadow($shadow) {
+    box-shadow: $shadow;
+}
+
+.bs-none,
+.bs-none:hover {
+    box-shadow: none !important
+}
+
+.bs {
+    @include box-shadow((0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06)));
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    will-change: transform, box-shadow;
+
+    &-light {
+        @include box-shadow(0 2px 8px 0 rgba(50, 50, 50, .08));
+    }
+
+    &-inset {
+        @include box-shadow((inset 0 4px 7px 1px #fff, inset 0 -5px 20px rgba(173, 186, 204, .25), 0 2px 6px rgba(0, 21, 64, .14), 0 10px 20px rgba(0, 21, 64, .05)));
+    }
+
+    // ... and so on for all 68 shadow variations
+}
+            </code>
+        </div>
+    </section>
+</main>
+    <script>
+        // Shadow data - class names and their box-shadow values
+        const shadows = [
+            { class: 'bs-1', props: 'box-shadow: rgba(150, 150, 150, .1) 0 0 20px 0' },
+            { class: 'bs-2', props: 'box-shadow: rgba(0, 0, 0, .1) 0 20px 60px -10px' },
+            { class: 'bs-3', props: 'box-shadow: rgba(0, 0, 0, .09) 0 6px 9px 0' },
+            { class: 'bs-4', props: 'box-shadow: rgba(0, 0, 0, .1) 0 5px 20px 0' },
+            { class: 'bs-5', props: 'box-shadow: rgba(0, 0, 0, .12) 0 3px 13px 1px' },
+            { class: 'bs-6', props: 'box-shadow: rgba(0, 0, 0, .1) 0 15px 35px 0, rgba(0, 0, 0, .07) 0 3px 10px 0' },
+            { class: 'bs-7', props: 'box-shadow: rgba(57, 70, 78, .15) 0 0 1px 0, rgba(57, 70, 78, .25) 0 20px 55px -8px' },
+            { class: 'bs-8', props: 'box-shadow: rgba(0, 0, 0, .25) 0 15px 45px -9px' },
+            { class: 'bs-9', props: 'box-shadow: rgba(0, 0, 0, .06) 0 1px 1px 1px' },
+            { class: 'bs-10', props: 'box-shadow: rgba(16, 36, 94, .4) 0 2px 6px 0' },
+            { class: 'bs-11', props: 'box-shadow: rgba(62, 57, 107, .3) 0 6px 16px 0' },
+            { class: 'bs-12', props: 'box-shadow: rgba(62, 57, 107, .36) 0 16px 38px -12px, rgba(62, 57, 107, .12) 0 4px 25px 0, rgba(62, 57, 107, .2) 0 8px 10px -5px' },
+            { class: 'bs-13', props: 'box-shadow: rgba(0, 0, 0, .2) 0 -15px 5px -12px' },
+            { class: 'bs-14', props: 'box-shadow: rgba(0, 0, 0, .09) 0 -6px 9px 0' },
+            { class: 'bs-15', props: 'box-shadow: rgba(0, 0, 0, .1) 0 -20px 60px -10px' },
+            { class: 'bs-16', props: 'box-shadow: rgba(16, 36, 94, .25) 0 -50px 100px -30px' },
+            { class: 'bs-17', props: 'box-shadow: rgba(112, 128, 175, .2) 0 -16px 24px 0' },
+            { class: 'bs-18', props: 'box-shadow: rgba(72, 76, 89, .28) 0 -16px 32px 0, transparent 0 0 0 0' },
+            { class: 'bs-19', props: 'box-shadow: rgba(72, 76, 89, .28) 0 -16px 32px 0, transparent 0 0 0 0' },
+            { class: 'bs-20', props: 'box-shadow: rgba(16, 36, 94, .2) 0 -30px 40px 0' },
+            { class: 'bs-21', props: 'box-shadow: rgba(0, 0, 0, .05) 5px 5px 0 0' },
+            { class: 'bs-22', props: 'box-shadow: rgba(0, 0, 0, .05) -5px 5px 0 0' },
+            { class: 'bs-23', props: 'box-shadow: rgba(0, 0, 0, .05) 5px -5px 0 0' },
+            { class: 'bs-24', props: 'box-shadow: rgba(0, 0, 0, .05) -5px -5px 0 0' },
+            { class: 'bs-25', props: 'box-shadow: rgba(72, 76, 89, .2) 2px 2px 4px 0' },
+            { class: 'bs-26', props: 'box-shadow: rgba(72, 76, 89, .2) -2px 2px 4px 0' },
+            { class: 'bs-27', props: 'box-shadow: rgba(72, 76, 89, .2) 2px -2px 4px 0' },
+            { class: 'bs-28', props: 'box-shadow: rgba(72, 76, 89, .2) -2px -2px 4px 0' },
+            { class: 'bs-29', props: 'box-shadow: rgba(50, 50, 50, .14) 2px 4px 6px 1px' },
+            { class: 'bs-30', props: 'box-shadow: rgba(50, 50, 50, .14) -2px 4px 6px 1px' },
+            { class: 'bs-31', props: 'box-shadow: rgba(50, 50, 50, .14) 2px -4px 6px 1px' },
+            { class: 'bs-32', props: 'box-shadow: rgba(50, 50, 50, .14) -2px -4px 6px 1px' },
+            { class: 'bs-33', props: 'box-shadow: rgba(0, 0, 0, .2) 15px 15px 5px -5px' },
+            { class: 'bs-34', props: 'box-shadow: rgba(0, 0, 0, .2) -15px 15px 5px -5px' },
+            { class: 'bs-35', props: 'box-shadow: rgba(0, 0, 0, .2) 15px -15px 5px -5px' },
+            { class: 'bs-36', props: 'box-shadow: rgba(0, 0, 0, .2) -15px -15px 5px -5px' },
+            { class: 'bs-37', props: 'box-shadow: rgba(62, 57, 107, .28) 10px 10px 32px 0, transparent 0 0 0 0' },
+            { class: 'bs-38', props: 'box-shadow: rgba(62, 57, 107, .28) -10px 10px 32px 0, transparent 0 0 0 0' },
+            { class: 'bs-39', props: 'box-shadow: rgba(62, 57, 107, .28) 10px -10px 32px 0, transparent 0 0 0 0' },
+            { class: 'bs-40', props: 'box-shadow: rgba(62, 57, 107, .28) -10px -10px 32px 0, transparent 0 0 0 0' },
+            { class: 'bs-41', props: 'box-shadow: rgba(26, 26, 67, .05) 1px 1px 5px 0, rgba(50, 50, 93, .5) 39px 62.5px 125px -25px, rgba(0, 0, 0, .3) 23.4px 37.5px 75px -37.5px' },
+            { class: 'bs-42', props: 'box-shadow: rgba(26, 26, 67, .05) 1px 1px 5px 0, rgba(50, 50, 93, .5) -39px 62.5px 125px -25px, rgba(0, 0, 0, .3) 23.4px 37.5px 75px -37.5px' },
+            { class: 'bs-43', props: 'box-shadow: rgba(0, 0, 0, .2) 0 15px 5px -12px' },
+            { class: 'bs-44', props: 'box-shadow: rgba(16, 36, 94, .25) 0 50px 100px -30px' },
+            { class: 'bs-45', props: 'box-shadow: rgba(0, 0, 0, .05) 0 8px 16px 0' },
+            { class: 'bs-46', props: 'box-shadow: rgba(0, 0, 0, .09) 0 6px 9px 0' },
+            { class: 'bs-47', props: 'box-shadow: rgba(112, 128, 175, .2) 0 16px 24px 0' },
+            { class: 'bs-48', props: 'box-shadow: rgba(72, 76, 89, .28) 0 16px 32px 0, transparent 0 0 0 0' },
+            { class: 'bs-49', props: 'box-shadow: rgba(16, 36, 94, .2) 0 30px 40px 0' },
+            { class: 'bs-50', props: 'box-shadow: rgba(0, 0, 0, .12) 0 0 70px 6px' },
+            { class: 'bs-51', props: 'box-shadow: 5px 31px 85px 23px rgba(0, 0, 0, .07)' },
+            { class: 'bs-52', props: 'box-shadow: 30px 70px 70px 40px rgba(0, 0, 0, .05)' },
+            { class: 'bs-53', props: 'box-shadow: 0 30px 48px 22px rgba(0, 0, 0, .07)' },
+            { class: 'bs-54', props: 'box-shadow: -41px 51px 68px 5px rgba(0, 0, 0, .06)' },
+            { class: 'bs-55', props: 'box-shadow: 41px 51px 68px 5px rgba(0, 0, 0, .06)' },
+            { class: 'bs-56', props: 'box-shadow: -100px 100px 85px 23px rgba(0, 0, 0, .07)' },
+            { class: 'bs-57', props: 'box-shadow: 100px 100px 85px 23px rgba(0, 0, 0, .07)' },
+            { class: 'bs-58', props: 'box-shadow: 5px 0 12px -10px rgba(0, 0, 0, .25), -5px 0 12px -10px rgba(0, 0, 0, .25)' },
+            { class: 'bs-59', props: 'box-shadow: 6px 0 12px -8px rgba(50, 50, 50, .45), -6px 0 12px -8px rgba(50, 50, 50, .45)' },
+            { class: 'bs-60', props: 'box-shadow: 6px 0 12px -7px rgba(50, 50, 50, .75), -6px 0 12px -7px rgba(50, 50, 50, .75)' },
+            { class: 'bs-61', props: 'box-shadow: -20px 0 50px -25px rgba(50, 50, 50, .65), 20px 0 50px -25px rgba(50, 50, 50, .65)' },
+            { class: 'bs-62', props: 'box-shadow: 20px 0 25px -15px rgba(50, 50, 50, .35), -20px 0 25px -15px rgba(50, 50, 50, .35)' },
+            { class: 'bs-63', props: 'box-shadow: 0 11px 30px -20px rgba(51, 51, 51, .51), 0 -11px 30px -20px rgba(51, 51, 51, .51)' },
+            { class: 'bs-64', props: 'box-shadow: 0 11px 8px -10px rgba(51, 51, 51, .51), 0 -11px 8px -10px rgba(51, 51, 51, .51)' },
+            { class: 'bs-65', props: 'box-shadow: rgba(0, 0, 0, 0.15) 0 3px 3px 0' },
+            { class: 'bs-66', props: 'box-shadow: rgba(50, 50, 105, 0.15) 0 2px 5px 0, rgba(0, 0, 0, 0.05) 0 1px 1px 0' },
+            { class: 'bs-67', props: 'box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px' },
+            { class: 'bs-68', props: 'box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px, rgba(9, 30, 66, 0.13) 0 0 1px 1px' }
+        ];
+
+        // Generate all shadow cards
+        const grid = document.getElementById('allShadowsGrid');
+        shadows.forEach((shadow, index) => {
+            const card = document.createElement('div');
+            card.className = 'shadow-card';
+            card.innerHTML = `
+                <div class="shadow-demo ${shadow.class}">Shadow ${index + 1}</div>
+                <div class="class-name">.${shadow.class}</div>
+                <div class="class-props">${shadow.props}</div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // Dynamic demo controls
+        const shadowSelect = document.getElementById('shadowSelect');
+        const bgColor = document.getElementById('bgColor');
+        const hoverToggle = document.getElementById('hoverToggle');
+        const dynamicDemo = document.getElementById('dynamicDemo');
+        const dynamicClass = document.getElementById('dynamicClass');
+        const dynamicProps = document.getElementById('dynamicProps');
+        const dynamicCode = document.getElementById('dynamicCode');
+
+        function updateDemo() {
+            const shadowNum = shadowSelect.value;
+            const color = bgColor.value;
+            const hover = hoverToggle.checked;
+            
+            // Reset all classes
+            dynamicDemo.className = 'shadow-demo';
+            dynamicDemo.style.backgroundColor = color;
+            
+            // Apply selected shadow
+            if (hover) {
+                dynamicDemo.classList.add(`bs-${shadowNum}h`);
+                dynamicClass.textContent = `.bs-${shadowNum}h`;
+            } else {
+                dynamicDemo.classList.add(`bs-${shadowNum}`);
+                dynamicClass.textContent = `.bs-${shadowNum}`;
+            }
+            
+            // Update props and code
+            const shadow = shadows[shadowNum - 1];
+            dynamicProps.textContent = shadow.props;
+            dynamicCode.textContent = `<div class="${hover ? `bs-${shadowNum}h` : `bs-${shadowNum}`}">Content</div>`;
+        }
+
+        shadowSelect.addEventListener('change', updateDemo);
+        bgColor.addEventListener('input', updateDemo);
+        hoverToggle.addEventListener('change', updateDemo);
+
+        // Initialize
+        updateDemo();
+
+        // Copy button functionality
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const codeBlock = button.parentElement;
+                const code = codeBlock.querySelector('code').textContent;
+                
+                navigator.clipboard.writeText(code.trim()).then(() => {
+                    button.textContent = 'Copied!';
+                    setTimeout(() => {
+                        button.textContent = 'Copy';
+                    }, 2000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

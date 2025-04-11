@@ -1,0 +1,226 @@
+/*!
+ * box-shadows.css v1.0.5 - https://github.com/madeas/box-shadows.css
+ *
+ * Copyright (c) 2018 Andrej Sharapov
+ * Licensed under MIT (https://github.com/madeas/box-shadows.css/blob/master/LICENSE)
+ */
+.bs-none,
+.bs-none:hover {
+  box-shadow: none !important;
+}
+
+.bs {
+  box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  will-change: transform, box-shadow;
+}
+.bs-light {
+  box-shadow: 0 2px 8px 0 rgba(50, 50, 50, 0.08);
+}
+.bs-inset {
+  box-shadow: inset 0 4px 7px 1px #fff, inset 0 -5px 20px rgba(173, 186, 204, 0.25), 0 2px 6px rgba(0, 21, 64, 0.14), 0 10px 20px rgba(0, 21, 64, 0.05);
+}
+.bs-1, .bs-1h:hover {
+  box-shadow: rgba(150, 150, 150, 0.1) 0 0 20px 0;
+}
+.bs-2, .bs-2h:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 20px 60px -10px;
+}
+.bs-3, .bs-3h:hover {
+  box-shadow: rgba(0, 0, 0, 0.09) 0 6px 9px 0;
+}
+.bs-4, .bs-4h:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 5px 20px 0;
+}
+.bs-5, .bs-5h:hover {
+  box-shadow: rgba(0, 0, 0, 0.12) 0 3px 13px 1px;
+}
+.bs-6, .bs-6h:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 15px 35px 0, rgba(0, 0, 0, 0.07) 0 3px 10px 0;
+}
+.bs-7, .bs-7h:hover {
+  box-shadow: rgba(57, 70, 78, 0.15) 0 0 1px 0, rgba(57, 70, 78, 0.25) 0 20px 55px -8px;
+}
+.bs-8, .bs-8h:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 15px 45px -9px;
+}
+.bs-9, .bs-9h:hover {
+  box-shadow: rgba(0, 0, 0, 0.06) 0 1px 1px 1px;
+}
+.bs-10, .bs-10h:hover {
+  box-shadow: rgba(16, 36, 94, 0.4) 0 2px 6px 0;
+}
+.bs-11, .bs-11h:hover {
+  box-shadow: rgba(62, 57, 107, 0.3) 0 6px 16px 0;
+}
+.bs-12, .bs-12h:hover {
+  box-shadow: rgba(62, 57, 107, 0.36) 0 16px 38px -12px, rgba(62, 57, 107, 0.12) 0 4px 25px 0, rgba(62, 57, 107, 0.2) 0 8px 10px -5px;
+}
+.bs-13, .bs-13h:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -15px 5px -12px;
+}
+.bs-14, .bs-14h:hover {
+  box-shadow: rgba(0, 0, 0, 0.09) 0 -6px 9px 0;
+}
+.bs-15, .bs-15h:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 -20px 60px -10px;
+}
+.bs-16, .bs-16h:hover {
+  box-shadow: rgba(16, 36, 94, 0.25) 0 -50px 100px -30px;
+}
+.bs-17, .bs-17h:hover {
+  box-shadow: rgba(112, 128, 175, 0.2) 0 -16px 24px 0;
+}
+.bs-18, .bs-18h:hover {
+  box-shadow: rgba(72, 76, 89, 0.28) 0 -16px 32px 0, transparent 0 0 0 0;
+}
+.bs-19, .bs-19h:hover {
+  box-shadow: rgba(72, 76, 89, 0.28) 0 -16px 32px 0, transparent 0 0 0 0;
+}
+.bs-20, .bs-20h:hover {
+  box-shadow: rgba(16, 36, 94, 0.2) 0 -30px 40px 0;
+}
+.bs-21, .bs-21h:hover {
+  box-shadow: rgba(0, 0, 0, 0.05) 5px 5px 0 0;
+}
+.bs-22, .bs-22h:hover {
+  box-shadow: rgba(0, 0, 0, 0.05) -5px 5px 0 0;
+}
+.bs-23, .bs-23h:hover {
+  box-shadow: rgba(0, 0, 0, 0.05) 5px -5px 0 0;
+}
+.bs-24, .bs-24h:hover {
+  box-shadow: rgba(0, 0, 0, 0.05) -5px -5px 0 0;
+}
+.bs-25, .bs-25h:hover {
+  box-shadow: rgba(72, 76, 89, 0.2) 2px 2px 4px 0;
+}
+.bs-26, .bs-26h:hover {
+  box-shadow: rgba(72, 76, 89, 0.2) -2px 2px 4px 0;
+}
+.bs-27, .bs-27h:hover {
+  box-shadow: rgba(72, 76, 89, 0.2) 2px -2px 4px 0;
+}
+.bs-28, .bs-28h:hover {
+  box-shadow: rgba(72, 76, 89, 0.2) -2px -2px 4px 0;
+}
+.bs-29, .bs-29h:hover {
+  box-shadow: rgba(50, 50, 50, 0.14) 2px 4px 6px 1px;
+}
+.bs-30, .bs-30h:hover {
+  box-shadow: rgba(50, 50, 50, 0.14) -2px 4px 6px 1px;
+}
+.bs-31, .bs-31h:hover {
+  box-shadow: rgba(50, 50, 50, 0.14) 2px -4px 6px 1px;
+}
+.bs-32, .bs-32h:hover {
+  box-shadow: rgba(50, 50, 50, 0.14) -2px -4px 6px 1px;
+}
+.bs-33, .bs-33h:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 15px 15px 5px -5px;
+}
+.bs-34, .bs-34h:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) -15px 15px 5px -5px;
+}
+.bs-35, .bs-35h:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 15px -15px 5px -5px;
+}
+.bs-36, .bs-36h:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) -15px -15px 5px -5px;
+}
+.bs-37, .bs-37h:hover {
+  box-shadow: rgba(62, 57, 107, 0.28) 10px 10px 32px 0, transparent 0 0 0 0;
+}
+.bs-38, .bs-38h:hover {
+  box-shadow: rgba(62, 57, 107, 0.28) -10px 10px 32px 0, transparent 0 0 0 0;
+}
+.bs-39, .bs-39h:hover {
+  box-shadow: rgba(62, 57, 107, 0.28) 10px -10px 32px 0, transparent 0 0 0 0;
+}
+.bs-40, .bs-40h:hover {
+  box-shadow: rgba(62, 57, 107, 0.28) -10px -10px 32px 0, transparent 0 0 0 0;
+}
+.bs-41, .bs-41h:hover {
+  box-shadow: rgba(26, 26, 67, 0.05) 1px 1px 5px 0, rgba(50, 50, 93, 0.5) 39px 62.5px 125px -25px, rgba(0, 0, 0, 0.3) 23.4px 37.5px 75px -37.5px;
+}
+.bs-42, .bs-42h:hover {
+  box-shadow: rgba(26, 26, 67, 0.05) 1px 1px 5px 0, rgba(50, 50, 93, 0.5) -39px 62.5px 125px -25px, rgba(0, 0, 0, 0.3) 23.4px 37.5px 75px -37.5px;
+}
+.bs-43, .bs-43h:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 0 15px 5px -12px;
+}
+.bs-44, .bs-44h:hover {
+  box-shadow: rgba(16, 36, 94, 0.25) 0 50px 100px -30px;
+}
+.bs-45, .bs-45h:hover {
+  box-shadow: rgba(0, 0, 0, 0.05) 0 8px 16px 0;
+}
+.bs-46, .bs-46h:hover {
+  box-shadow: rgba(0, 0, 0, 0.09) 0 6px 9px 0;
+}
+.bs-47, .bs-47h:hover {
+  box-shadow: rgba(112, 128, 175, 0.2) 0 16px 24px 0;
+}
+.bs-48, .bs-48h:hover {
+  box-shadow: rgba(72, 76, 89, 0.28) 0 16px 32px 0, transparent 0 0 0 0;
+}
+.bs-49, .bs-49h:hover {
+  box-shadow: rgba(16, 36, 94, 0.2) 0 30px 40px 0;
+}
+.bs-50, .bs-50h:hover {
+  box-shadow: rgba(0, 0, 0, 0.12) 0 0 70px 6px;
+}
+.bs-51, .bs-51h:hover {
+  box-shadow: 5px 31px 85px 23px rgba(0, 0, 0, 0.07);
+}
+.bs-52, .bs-52h:hover {
+  box-shadow: 30px 70px 70px 40px rgba(0, 0, 0, 0.05);
+}
+.bs-53, .bs-53h:hover {
+  box-shadow: 0 30px 48px 22px rgba(0, 0, 0, 0.07);
+}
+.bs-54, .bs-54h:hover {
+  box-shadow: -41px 51px 68px 5px rgba(0, 0, 0, 0.06);
+}
+.bs-55, .bs-55h:hover {
+  box-shadow: 41px 51px 68px 5px rgba(0, 0, 0, 0.06);
+}
+.bs-56, .bs-56h:hover {
+  box-shadow: -100px 100px 85px 23px rgba(0, 0, 0, 0.07);
+}
+.bs-57, .bs-57h:hover {
+  box-shadow: 100px 100px 85px 23px rgba(0, 0, 0, 0.07);
+}
+.bs-58, .bs-58h:hover {
+  box-shadow: 5px 0 12px -10px rgba(0, 0, 0, 0.25), -5px 0 12px -10px rgba(0, 0, 0, 0.25);
+}
+.bs-59, .bs-59h:hover {
+  box-shadow: 6px 0 12px -8px rgba(50, 50, 50, 0.45), -6px 0 12px -8px rgba(50, 50, 50, 0.45);
+}
+.bs-60, .bs-60h:hover {
+  box-shadow: 6px 0 12px -7px rgba(50, 50, 50, 0.75), -6px 0 12px -7px rgba(50, 50, 50, 0.75);
+}
+.bs-61, .bs-61h:hover {
+  box-shadow: -20px 0 50px -25px rgba(50, 50, 50, 0.65), 20px 0 50px -25px rgba(50, 50, 50, 0.65);
+}
+.bs-62, .bs-62h:hover {
+  box-shadow: 20px 0 25px -15px rgba(50, 50, 50, 0.35), -20px 0 25px -15px rgba(50, 50, 50, 0.35);
+}
+.bs-63, .bs-63h:hover {
+  box-shadow: 0 11px 30px -20px rgba(51, 51, 51, 0.51), 0 -11px 30px -20px rgba(51, 51, 51, 0.51);
+}
+.bs-64, .bs-64h:hover {
+  box-shadow: 0 11px 8px -10px rgba(51, 51, 51, 0.51), 0 -11px 8px -10px rgba(51, 51, 51, 0.51);
+}
+.bs-65, .bs-65h:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 0 3px 3px 0;
+}
+.bs-66, .bs-66h:hover {
+  box-shadow: rgba(50, 50, 105, 0.15) 0 2px 5px 0, rgba(0, 0, 0, 0.05) 0 1px 1px 0;
+}
+.bs-67, .bs-67h:hover {
+  box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
+}
+.bs-68, .bs-68h:hover {
+  box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px, rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+}/*# sourceMappingURL=shadow.css.map */

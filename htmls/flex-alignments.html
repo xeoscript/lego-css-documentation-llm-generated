@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Alignment System Documentation</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2980b9;
+            --success: #27ae60;
+            --light-bg: #f9f9f9;
+            --dark-bg: #2c3e50;
+            --text: #333;
+            --text-light: #ecf0f1;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            /* max-width: 1000px; */
+            margin: 0 auto;
+            padding: 30px;
+            background-color: var(--light-bg);
+        }
+        h1, h2, h3, h4 {
+            color: var(--primary);
+            margin-top: 1.5em;
+        }
+        h1 {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+        h2 {
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+        }
+        h3 {
+            color: var(--secondary);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background: #eef;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        .code-container {
+            position: relative;
+            margin: 20px 0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        pre {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            padding: 15px;
+            margin: 0;
+            overflow-x: auto;
+            line-height: 1.4;
+            tab-size: 4;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            color: inherit;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        .copy-btn.copied {
+            background: var(--success);
+        }
+        .note {
+            background-color: #e7f5fe;
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .example {
+            background-color: #f0fff0;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .flex-demo {
+            background: #f5f5f5;
+            border: 1px dashed #ccc;
+            padding: 15px;
+            margin: 15px 0;
+            min-height: 100px;
+        }
+        .flex-item {
+            background: var(--primary);
+            color: white;
+            padding: 10px;
+            margin: 5px;
+            text-align: center;
+            min-width: 50px;
+        }
+        .flex-demo-row {
+            display: flex;
+        }
+        .flex-demo-column {
+            display: flex;
+            flex-direction: column;
+        }
+        .breakpoint-table {
+            width: auto;
+            margin: 20px 0;
+        }
+        .breakpoint-table th, 
+        .breakpoint-table td {
+            padding: 8px 12px;
+        }
+    </style>
+    <link rel="stylesheet" href="./assets/sidebar.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="fl-x fl-a-c"><img src="./assets/logo/xeo-lego.png" class="logo-sm" alt=""><span class="ml-1"><b>&nbsp; Lego CSS Docs</b></span></div>
+        </div>
+        <nav class="sidebar-nav">
+          <ul>
+            <li><a href="../index.html">Grid System</a></li>
+      
+            <!-- Dropdown Menu -->
+            <!-- <li class="dropdown">
+              <input type="checkbox" id="doc-toggle">
+              <label for="doc-toggle" class="dropdown-label">Documentation</label>
+              <ul class="dropdown-menu">
+                <li><a href="#grid-system">Grid System</a></li>
+                <li><a href="#utilities">Utilities</a></li>
+                <li><a href="#customization">Customization</a></li>
+              </ul>
+            </li> -->
+      
+            <li><a href="./margin-padding.html">Margin & Padding</a></li>
+            <li><a href="./position-and-other-helpers.html">Position</a></li>
+            <li><a href="./flex-alignments.html" class="active">Flex Alignments</a></li>
+            <li><a href="./display-utility.html">Display</a></li>
+            <li><a href="./border-classes.html">Borders</a></li>
+            <li><a href="./accent-color-utility.html" class="">Accent Colors</a></li>
+            <li><a href="./box-shadows.html">Box Shadow</a></li>
+            <li><a href="./text-utility.html" class="active">Text Utility</a></li>
+
+            <li><a href="./flex-alignments.html" target="_blank" class="github-btn">GitHub</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <main>
+    <h1>Flex Alignment System</h1>
+    
+    <p>A comprehensive flexbox utility system with responsive alignment classes for creating flexible layouts.</p>
+    
+    <div class="note">
+        <strong>Note:</strong> All classes are prefixed with breakpoint variants (e.g., <code>sm:fl-x</code>, <code>md:fl-a-c</code>) for responsive control.
+    </div>
+    
+    <h2>Core Flex Classes</h2>
+    
+    <h3>Basic Flex Containers</h3>
+    
+    <div class="example">
+        <h4>Examples:</h4>
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre><code>&lt;!-- Horizontal flex container --&gt;
+&lt;div class="fl-x"&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div&gt;Item 2&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Vertical flex container --&gt;
+&lt;div class="fl-y"&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div&gt;Item 2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        
+        <h4>Demo:</h4>
+        <div class="flex-demo flex-demo-row">
+            <div class="flex-item">Item 1</div>
+            <div class="flex-item">Item 2</div>
+        </div>
+    </div>
+    
+    <h3>Flex Directions</h3>
+    
+    <table>
+        <tr>
+            <th>Class</th>
+            <th>Property</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>fl-x</code></td>
+            <td><code>flex-direction: row</code></td>
+            <td>Horizontal layout (default)</td>
+        </tr>
+        <tr>
+            <td><code>fl-y</code></td>
+            <td><code>flex-direction: column</code></td>
+            <td>Vertical layout</td>
+        </tr>
+        <tr>
+            <td><code>fl-rr</code></td>
+            <td><code>flex-direction: row-reverse</code></td>
+            <td>Horizontal reversed</td>
+        </tr>
+        <tr>
+            <td><code>fl-cr</code></td>
+            <td><code>flex-direction: column-reverse</code></td>
+            <td>Vertical reversed</td>
+        </tr>
+    </table>
+    
+    <h2>Alignment Classes</h2>
+    
+    <h3>Align Items (Cross Axis)</h3>
+    
+    <div class="example">
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre><code>&lt;div class="fl-x fl-a-s"&gt;...&lt;/div&gt;  &lt;!-- flex-start --&gt;
+&lt;div class="fl-x fl-a-e"&gt;...&lt;/div&gt;  &lt;!-- flex-end --&gt;
+&lt;div class="fl-x fl-a-c"&gt;...&lt;/div&gt;  &lt;!-- center --&gt;
+&lt;div class="fl-x fl-a-d"&gt;...&lt;/div&gt;  &lt;!-- stretch --&gt;
+&lt;div class="fl-x fl-a-b"&gt;...&lt;/div&gt;  &lt;!-- baseline --&gt;</code></pre>
+        </div>
+        
+        <h4>Demo:</h4>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <div>
+                <p><code>fl-a-s</code> (flex-start)</p>
+                <div class="flex-demo flex-demo-row" style="align-items: flex-start; height: 120px;">
+                    <div class="flex-item" style="height: 40px;">Item 1</div>
+                    <div class="flex-item" style="height: 60px;">Item 2</div>
+                    <div class="flex-item" style="height: 80px;">Item 3</div>
+                </div>
+            </div>
+            <div>
+                <p><code>fl-a-e</code> (flex-end)</p>
+                <div class="flex-demo flex-demo-row" style="align-items: flex-end; height: 120px;">
+                    <div class="flex-item" style="height: 40px;">Item 1</div>
+                    <div class="flex-item" style="height: 60px;">Item 2</div>
+                    <div class="flex-item" style="height: 80px;">Item 3</div>
+                </div>
+            </div>
+            <div>
+                <p><code>fl-a-c</code> (center)</p>
+                <div class="flex-demo flex-demo-row" style="align-items: center; height: 120px;">
+                    <div class="flex-item" style="height: 40px;">Item 1</div>
+                    <div class="flex-item" style="height: 60px;">Item 2</div>
+                    <div class="flex-item" style="height: 80px;">Item 3</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>Justify Content (Main Axis)</h3>
+    
+    <div class="example">
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre><code>&lt;div class="fl-x fl-j-s"&gt;...&lt;/div&gt;  &lt;!-- flex-start --&gt;
+&lt;div class="fl-x fl-j-e"&gt;...&lt;/div&gt;  &lt;!-- flex-end --&gt;
+&lt;div class="fl-x fl-j-c"&gt;...&lt;/div&gt;  &lt;!-- center --&gt;
+&lt;div class="fl-x fl-j-sa"&gt;...&lt;/div&gt; &lt;!-- space-around --&gt;
+&lt;div class="fl-x fl-j-sb"&gt;...&lt;/div&gt; &lt;!-- space-between --&gt;
+&lt;div class="fl-x fl-j-se"&gt;...&lt;/div&gt; &lt;!-- space-evenly --&gt;</code></pre>
+        </div>
+        
+        <h4>Demo:</h4>
+        <div style=" gap: 20px; flex-wrap: wrap;">
+            <div>
+                <p><code>fl-j-s</code> (flex-start)</p>
+                <div class="flex-demo flex-demo-row" style="justify-content: flex-start;">
+                    <div class="flex-item">1</div>
+                    <div class="flex-item">2</div>
+                    <div class="flex-item">3</div>
+                </div>
+            </div>
+            <div>
+                <p><code>fl-j-e</code> (flex-end)</p>
+                <div class="flex-demo flex-demo-row" style="justify-content: flex-end;">
+                    <div class="flex-item">1</div>
+                    <div class="flex-item">2</div>
+                    <div class="flex-item">3</div>
+                </div>
+            </div>
+            <div>
+                <p><code>fl-j-c</code> (center)</p>
+                <div class="flex-demo flex-demo-row" style="justify-content: center;">
+                    <div class="flex-item">1</div>
+                    <div class="flex-item">2</div>
+                    <div class="flex-item">3</div>
+                </div>
+            </div>
+            <div>
+                <p><code>fl-j-sb</code> (space-between)</p>
+                <div class="flex-demo flex-demo-row" style="justify-content: space-between;">
+                    <div class="flex-item">1</div>
+                    <div class="flex-item">2</div>
+                    <div class="flex-item">3</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h2>Predefined Combinations</h2>
+    
+    <h3>Horizontal Alignment Combinations</h3>
+    
+    <table>
+        <tr>
+            <th>Class</th>
+            <th>Alignment</th>
+            <th>Justification</th>
+        </tr>
+        <tr>
+            <td><code>fl-x-tl</code></td>
+            <td>top (flex-start)</td>
+            <td>left (flex-start)</td>
+        </tr>
+        <tr>
+            <td><code>fl-x-tc</code></td>
+            <td>top (flex-start)</td>
+            <td>center</td>
+        </tr>
+        <tr>
+            <td><code>fl-x-tr</code></td>
+            <td>top (flex-start)</td>
+            <td>right (flex-end)</td>
+        </tr>
+        <tr>
+            <td><code>fl-x-cl</code></td>
+            <td>center</td>
+            <td>left (flex-start)</td>
+        </tr>
+        <tr>
+            <td><code>fl-x-cc</code></td>
+            <td>center</td>
+            <td>center</td>
+        </tr>
+        <tr>
+            <td><code>fl-x-cr</code></td>
+            <td>center</td>
+            <td>right (flex-end)</td>
+        </tr>
+        <tr>
+            <td><code>fl-x-bl</code></td>
+            <td>bottom (flex-end)</td>
+            <td>left (flex-start)</td>
+        </tr>
+        <tr>
+            <td><code>fl-x-bc</code></td>
+            <td>bottom (flex-end)</td>
+            <td>center</td>
+        </tr>
+        <tr>
+            <td><code>fl-x-br</code></td>
+            <td>bottom (flex-end)</td>
+            <td>right (flex-end)</td>
+        </tr>
+    </table>
+    
+    <div class="example">
+        <h4>Example:</h4>
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre><code>&lt;!-- Centered both horizontally and vertically --&gt;
+&lt;div class="fl-x-cc"&gt;
+  &lt;div&gt;Centered Content&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Top-right aligned --&gt;
+&lt;div class="fl-x-tr"&gt;
+  &lt;div&gt;Top Right&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+    </div>
+    
+    <h3>Vertical Alignment Combinations</h3>
+    
+    <table>
+        <tr>
+            <th>Class</th>
+            <th>Alignment</th>
+            <th>Justification</th>
+        </tr>
+        <tr>
+            <td><code>fl-y-tl</code></td>
+            <td>top (flex-start)</td>
+            <td>left (flex-start)</td>
+        </tr>
+        <tr>
+            <td><code>fl-y-tc</code></td>
+            <td>top (flex-start)</td>
+            <td>center</td>
+        </tr>
+        <tr>
+            <td><code>fl-y-tr</code></td>
+            <td>top (flex-start)</td>
+            <td>right (flex-end)</td>
+        </tr>
+        <tr>
+            <td><code>fl-y-cl</code></td>
+            <td>center</td>
+            <td>left (flex-start)</td>
+        </tr>
+        <tr>
+            <td><code>fl-y-cc</code></td>
+            <td>center</td>
+            <td>center</td>
+        </tr>
+        <tr>
+            <td><code>fl-y-cr</code></td>
+            <td>center</td>
+            <td>right (flex-end)</td>
+        </tr>
+        <tr>
+            <td><code>fl-y-bl</code></td>
+            <td>bottom (flex-end)</td>
+            <td>left (flex-start)</td>
+        </tr>
+        <tr>
+            <td><code>fl-y-bc</code></td>
+            <td>bottom (flex-end)</td>
+            <td>center</td>
+        </tr>
+        <tr>
+            <td><code>fl-y-br</code></td>
+            <td>bottom (flex-end)</td>
+            <td>right (flex-end)</td>
+        </tr>
+    </table>
+    
+    <h2>Equal Width/Height Classes</h2>
+    
+    <div class="example">
+        <h4>Equal Width Columns:</h4>
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre><code>&lt;div class="fl-eq"&gt;
+  &lt;div&gt;Equal Width&lt;/div&gt;
+  &lt;div&gt;Equal Width&lt;/div&gt;
+  &lt;div&gt;Equal Width&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        
+        <h4>Demo:</h4>
+        <div class="flex-demo flex-demo-row" style="align-items: stretch;">
+            <div class="flex-item" style="flex-grow: 1;">Column 1</div>
+            <div class="flex-item" style="flex-grow: 1;">Column 2</div>
+            <div class="flex-item" style="flex-grow: 1;">Column 3</div>
+        </div>
+    </div>
+    
+    <div class="example">
+        <h4>Equal Height Rows:</h4>
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre><code>&lt;div class="fl-eqh"&gt;
+  &lt;div&gt;Equal Height&lt;/div&gt;
+  &lt;div&gt;Equal Height&lt;/div&gt;
+  &lt;div&gt;Equal Height&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+    </div>
+    
+    <h2>Responsive Breakpoints</h2>
+    
+    <p>All flex classes are available with responsive breakpoint prefixes:</p>
+    
+    <table class="breakpoint-table">
+        <tr>
+            <th>Breakpoint</th>
+            <th>Prefix</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>Extra small</td>
+            <td><code>xs-</code></td>
+            <td><code>xs-fl-x</code></td>
+        </tr>
+        <tr>
+            <td>Small</td>
+            <td><code>sm-</code></td>
+            <td><code>sm-fl-a-c</code></td>
+        </tr>
+        <tr>
+            <td>Medium</td>
+            <td><code>md-</code></td>
+            <td><code>md-fl-j-sb</code></td>
+        </tr>
+        <tr>
+            <td>Large</td>
+            <td><code>lg-</code></td>
+            <td><code>lg-fl-y-cc</code></td>
+        </tr>
+        <tr>
+            <td>Extra large</td>
+            <td><code>xl-</code></td>
+            <td><code>xl-fl-eq</code></td>
+        </tr>
+    </table>
+    
+    <div class="example">
+        <h4>Responsive Example:</h4>
+        <div class="code-container">
+            <button class="copy-btn">Copy</button>
+            <pre><code>&lt;!-- Stack vertically on mobile, row on desktop --&gt;
+&lt;div class="fl-y md-fl-x"&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div&gt;Item 2&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Center items on large screens only --&gt;
+&lt;div class="fl-x lg-fl-a-c"&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div&gt;Item 2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+    </div>
+    
+    <h2>Additional Utilities</h2>
+    
+    <table>
+        <tr>
+            <th>Class</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>fl-wrap</code></td>
+            <td>Allow flex items to wrap</td>
+        </tr>
+        <tr>
+            <td><code>fl-no-wrap</code></td>
+            <td>Prevent flex items from wrapping</td>
+        </tr>
+        <tr>
+            <td><code>fl-gr-1</code> to <code>fl-gr-5</code></td>
+            <td>Flex grow values 1 through 5</td>
+        </tr>
+        <tr>
+            <td><code>fl-grow</code></td>
+            <td>Flex item that grows to fill space</td>
+        </tr>
+    </table>
+    
+    <div class="note">
+        <strong>Tip:</strong> Combine these classes with your grid system for powerful responsive layouts.
+    </div>
+</main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add copy functionality to all copy buttons
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            
+            copyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const codeBlock = this.parentNode.querySelector('pre code');
+                    const textToCopy = codeBlock.textContent;
+                    
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        // Visual feedback
+                        const originalText = this.textContent;
+                        this.textContent = 'Copied!';
+                        this.classList.add('copied');
+                        
+                        // Reset after 2 seconds
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                            this.classList.remove('copied');
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy text: ', err);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
